@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Planos — Médicos Consultas Online</title>
+  <meta name="description" content="Escolha o plano ideal de telemedicina: Individual, Individual Plus, Casal, Casal Plus, Familiar, Familiar Plus, Empresarial e Empresarial Plus. Sem carência, consultas 24h.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Poppins','ui-sans-serif','system-ui'] },
+          colors: {
+            brand: { 50:'#f2fbf5',100:'#e4f7ea',200:'#c5efcf',300:'#92e1a6',400:'#4fcb76',500:'#22b24f',600:'#10b981',700:'#059669',800:'#135a2c',900:'#0f4825' },
+            emerald: { 500:'#10b981' }
+          },
+          boxShadow: {
+            soft:'0 10px 30px rgba(0,0,0,.06)',
+            medium:'0 4px 12px rgba(0,0,0,.08)'
+          },
+          backgroundImage: {
+            'gradient-primary':'linear-gradient(135deg, #10b981 0%, #22b24f 100%)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth }
+    .card { transition: transform .25s ease, box-shadow .25s ease }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 18px 42px rgba(0,0,0,.12) }
+    .chip { transition: all .2s ease }
+    .chip.active { background:#10b981; color:#fff; border-color:transparent }
+    .badge { font-size:.7rem; letter-spacing:.04em }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+  <!-- Topbar -->
+  <div class="bg-emerald-600 text-white text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between gap-4">
+      <div class="flex flex-wrap items-center gap-4">
+        <span class="inline-flex items-center gap-2"><i class="fas fa-phone w-4 h-4"></i>(51) 99509-5554</span>
+        <a href="mailto:contato@medicosconsultasonline.com.br" class="inline-flex items-center gap-2 hover:underline">
+          <i class="fas fa-envelope w-4 h-4"></i>
+          contato@medicosconsultasonline.com.br
+        </a>
+      </div>
+      <div class="hidden sm:flex items-center gap-3">
+        <a href="#cliente" class="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 transition">Área do Cliente</a>
+        <a href="#parceiro" class="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 transition">Quero Virar Parceiro</a>
+      </div>
+    </div>
+  </div>
+
+<!-- Header / Navbar -->
+  <header id="inicio" class="sticky-nav bg-white/90 backdrop-blur border-b border-slate-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="#inicio" class="flex items-center gap-2">
+          <!-- Logo corrigida: caminho relativo e ajustes -->
+          <div class="w-20 h-20 relative flex items-center justify-center">
+            <img src="assets/img/logo.png"
+                 alt="Médicos Consultas Online"
+                 class="max-w-full max-h-full object-contain"
+                 loading="eager"
+                 onerror="this.onerror=null;this.src='https://placehold.co/96x96?text=Logo';">
+          </div>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="index.html#inicio" class="navlink text-slate-700 hover:text-emerald-700 transition font-medium">Início</a>
+          <a href="index.html#como-funciona" class="navlink text-slate-700 hover:text-emerald-700 transition font-medium">Como Funciona</a>
+          <a href="index.html#especialidades" class="navlink text-slate-700 hover:text-emerald-700 transition font-medium">Especialidades</a>
+          <a href="planos.html" class="navlink text-emerald-700 font-semibold">Planos</a>
+          <a href="quem-somos.html" class="navlink text-slate-700 hover:text-emerald-700 transition font-medium">Quem Somos</a>
+          <a href="index.html#faq" class="navlink text-slate-700 hover:text-emerald-700 transition font-medium">FAQ</a>
+        </nav>
+
+        <div class="hidden md:flex">
+          <a href="index.html#contrate" class="inline-flex items-center rounded-full bg-gradient-primary text-white px-5 py-2.5 font-medium shadow-soft hover:shadow-medium transition-all duration-300">Contrate Agora</a>
+        </div>
+
+        <button id="menuBtn" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 hover:bg-slate-50 transition">
+          <i class="fas fa-bars text-slate-700"></i>
+        </button>
+      </div>
+      <div id="mobileMenu" class="md:hidden hidden pb-4 pt-2">
+        <div class="grid gap-2">
+          <a class="mobilelink rounded-lg px-3 py-2 hover:bg-slate-50 font-medium" href="index.html#inicio">Início</a>
+          <a class="mobilelink rounded-lg px-3 py-2 hover:bg-slate-50 font-medium" href="index.html#como-funciona">Como Funciona</a>
+          <a class="mobilelink rounded-lg px-3 py-2 hover:bg-slate-50 font-medium" href="index.html#especialidades">Especialidades</a>
+          <a class="mobilelink rounded-lg px-3 py-2 hover:bg-slate-50 font-medium" href="planos.html">Planos</a>
+          <a class="mobilelink rounded-lg px-3 py-2 hover:bg-slate-50 font-medium" href="quem-somos.html">Quem Somos</a>
+          <a class="mobilelink rounded-lg px-3 py-2 hover:bg-slate-50 font-medium" href="index.html#faq">FAQ</a>
+          <a class="inline-flex items-center justify-center rounded-lg bg-gradient-primary text-white px-4 py-2.5 font-medium mt-2 shadow-soft hover:shadow-medium transition" href="index.html#contrate">Contrate Agora</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div class="text-center max-w-3xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900">Escolha o plano ideal</h1>
+        <p class="mt-3 text-slate-600">Plano trimestral • Pagamento via Cartão, Boleto ou PIX<br><span class="text-xs">* Valores promocionais válidos até o vencimento. Após vencimento, volta ao valor sem desconto.</span></p>
+
+        <!-- Chips filtro -->
+        <div class="mt-6 inline-flex flex-wrap gap-2">
+          <button class="chip active px-4 py-2 rounded-full border border-slate-200 bg-white text-sm" data-filter="all">Todos os planos</button>
+          <button class="chip px-4 py-2 rounded-full border border-slate-200 bg-white text-sm" data-filter="individual">Individual</button>
+          <button class="chip px-4 py-2 rounded-full border border-slate-200 bg-white text-sm" data-filter="casal">Casal</button>
+          <button class="chip px-4 py-2 rounded-full border border-slate-200 bg-white text-sm" data-filter="familiar">Familiar</button>
+          <button class="chip px-4 py-2 rounded-full border border-slate-200 bg-white text-sm" data-filter="empresarial">Empresarial</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cards -->
+  <section class="pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+
+      <!-- Individual 29,90 -->
+      <article class="card rounded-2xl bg-white border border-slate-200 p-7" data-cat="individual">
+        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL</div>
+        <h3 class="mt-2 font-semibold text-xl">Individual</h3>
+        <ul class="mt-4 space-y-2 text-slate-700 text-sm">
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Atendimentos ilimitados com médicos especializados e Clínico Geral</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Sem carência</li>
+          <li class="flex gap-2"><i class="fa-solid fa-link text-emerald-600 mt-1"></i><a class="underline hover:no-underline" href="index.html#especialidades">Clique aqui e veja todas especialidades</a></li>
+        </ul>
+        <div class="mt-5">
+          <div class="text-xs line-through text-slate-400">De R$ 69,90</div>
+          <div class="text-4xl font-extrabold text-slate-900">R$ 29,90</div>
+          <div class="text-slate-500 text-sm">/mês</div>
+        </div>
+        <a href="#contratar" class="mt-7 inline-flex justify-center w-full px-4 py-3 rounded-lg bg-emerald-600 text-white font-medium hover:bg-emerald-700">Quero esse</a>
+      </article>
+
+      <!-- Individual Plus 39,90 -->
+      <article class="card rounded-2xl bg-white border border-slate-200 p-7" data-cat="individual">
+        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL</div>
+        <h3 class="mt-2 font-semibold text-xl">Individual Plus</h3>
+        <ul class="mt-4 space-y-2 text-slate-700 text-sm">
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Atendimentos ilimitados com médicos especializados e Clínico Geral</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Sem carência</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Consultas com Nutricionista</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Consultas com Psicólogo</li>
+          <li class="flex gap-2"><i class="fa-solid fa-link text-emerald-600 mt-1"></i><a class="underline hover:no-underline" href="index.html#especialidades">Clique aqui e veja todas especialidades</a></li>
+        </ul>
+        <div class="mt-5">
+          <div class="text-xs line-through text-slate-400">De R$ 69,90</div>
+          <div class="text-4xl font-extrabold text-slate-900">R$ 39,90</div>
+          <div class="text-slate-500 text-sm">/mês</div>
+        </div>
+        <a href="#contratar" class="mt-7 inline-flex justify-center w-full px-4 py-3 rounded-lg bg-emerald-600 text-white font-medium hover:bg-emerald-700">Quero esse</a>
+      </article>
+
+      <!-- Casal 39,90 (por casal) -->
+      <article class="card rounded-2xl bg-white border border-slate-200 p-7" data-cat="casal">
+        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL</div>
+        <h3 class="mt-2 font-semibold text-xl">Casal</h3>
+        <p class="text-slate-500 text-sm">para 2 pessoas</p>
+        <ul class="mt-4 space-y-2 text-slate-700 text-sm">
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Atendimentos ilimitados com médicos especializados e Clínico Geral</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Sem carência</li>
+          <li class="flex gap-2"><i class="fa-solid fa-link text-emerald-600 mt-1"></i><a class="underline hover:no-underline" href="index.html#especialidades">Clique aqui e veja todas especialidades</a></li>
+        </ul>
+        <div class="mt-5">
+          <div class="text-xs line-through text-slate-400">De R$ 69,90</div>
+          <div class="text-4xl font-extrabold text-slate-900">R$ 39,90</div>
+          <div class="text-slate-500 text-sm">/mês — <b>por casal</b></div>
+        </div>
+        <a href="#contratar" class="mt-7 inline-flex justify-center w-full px-4 py-3 rounded-lg bg-emerald-600 text-white font-medium hover:bg-emerald-700">Quero esse</a>
+      </article>
+
+      <!-- Casal Plus 49,90 -->
+      <article class="card relative rounded-2xl bg-white border-2 border-emerald-600 p-7" data-cat="casal">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-600 text-white text-[11px] px-3 py-1 rounded-full font-semibold">Recomendado</div>
+        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL</div>
+        <h3 class="mt-2 font-semibold text-xl">Casal Plus</h3>
+        <p class="text-slate-500 text-sm">para 2 pessoas</p>
+        <ul class="mt-4 space-y-2 text-slate-700 text-sm">
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Atendimentos ilimitados com médicos especializados e Clínico Geral</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Sem carência</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Consultas com Nutricionista</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Consultas com Psicólogo</li>
+          <li class="flex gap-2"><i class="fa-solid fa-link text-emerald-600 mt-1"></i><a class="underline hover:no-underline" href="index.html#especialidades">Clique aqui e veja todas especialidades</a></li>
+        </ul>
+        <div class="mt-5">
+          <div class="text-xs line-through text-slate-400">De R$ 79,90</div>
+          <div class="text-4xl font-extrabold text-slate-900">R$ 49,90</div>
+          <div class="text-slate-500 text-sm">/mês — <b>por casal</b></div>
+        </div>
+        <a href="#contratar" class="mt-7 inline-flex justify-center w-full px-4 py-3 rounded-lg bg-emerald-600 text-white font-medium hover:bg-emerald-700">Quero esse</a>
+      </article>
+
+      <!-- Familiar 59,90 (até 4) -->
+      <article class="card rounded-2xl bg-white border border-slate-200 p-7" data-cat="familiar">
+        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL</div>
+        <h3 class="mt-2 font-semibold text-xl">Familiar</h3>
+        <p class="text-slate-500 text-sm">até 4 pessoas</p>
+        <ul class="mt-4 space-y-2 text-slate-700 text-sm">
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Atendimentos ilimitados com médicos especializados e Clínico Geral</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Sem carência</li>
+          <li class="flex gap-2"><i class="fa-solid fa-link text-emerald-600 mt-1"></i><a class="underline hover:no-underline" href="index.html#especialidades">Clique aqui e veja todas Especialidades</a></li>
+        </ul>
+        <div class="mt-5">
+          <div class="text-xs line-through text-slate-400">De R$ 89,90</div>
+          <div class="text-4xl font-extrabold text-slate-900">R$ 59,90</div>
+          <div class="text-slate-500 text-sm">/mês — <b>até 4 pessoas</b></div>
+        </div>
+        <a href="#contratar" class="mt-7 inline-flex justify-center w-full px-4 py-3 rounded-lg bg-emerald-600 text-white font-medium hover:bg-emerald-700">Quero esse</a>
+      </article>
+
+      <!-- Familiar Plus 69,90 (até 4) -->
+      <article class="card rounded-2xl bg-white border border-slate-200 p-7" data-cat="familiar">
+        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL</div>
+        <h3 class="mt-2 font-semibold text-xl">Familiar Plus</h3>
+        <p class="text-slate-500 text-sm">até 4 pessoas</p>
+        <ul class="mt-4 space-y-2 text-slate-700 text-sm">
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Atendimentos ilimitados com médicos especializados e Clínico Geral</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Sem carência</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Consultas com Nutricionista</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Consultas com Psicólogo</li>
+          <li class="flex gap-2"><i class="fa-solid fa-link text-emerald-600 mt-1"></i><a class="underline hover:no-underline" href="index.html#especialidades">Clique aqui e veja todas Especialidades para a Família</a></li>
+        </ul>
+        <div class="mt-5">
+          <div class="text-xs line-through text-slate-400">De R$ 99,90</div>
+          <div class="text-4xl font-extrabold text-slate-900">R$ 69,90</div>
+          <div class="text-slate-500 text-sm">/mês — <b>até 4 pessoas</b></div>
+        </div>
+        <a href="#contratar" class="mt-7 inline-flex justify-center w-full px-4 py-3 rounded-lg bg-emerald-600 text-white font-medium hover:bg-emerald-700">Quero esse</a>
+      </article>
+
+      <!-- Empresarial (mín. 6) -->
+      <article class="card rounded-2xl bg-white border border-slate-200 p-7" data-cat="empresarial">
+        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL</div>
+        <h3 class="mt-2 font-semibold text-xl">Empresarial</h3>
+        <p class="text-slate-500 text-sm">mínimo de 6 funcionários</p>
+        <ul class="mt-4 space-y-2 text-slate-700 text-sm">
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Atendimentos ilimitados com médicos especializados e Clínico Geral</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Sem carência</li>
+          <li class="flex gap-2"><i class="fa-solid fa-link text-emerald-600 mt-1"></i><a class="underline hover:no-underline" href="index.html#especialidades">Clique aqui e veja todas Especialidades para seus Colaboradores</a></li>
+        </ul>
+        <a href="mailto:contato@medicosconsultasonline.com.br" class="mt-7 inline-flex justify-center w-full px-4 py-3 rounded-lg border border-slate-300 text-slate-800 font-medium hover:bg-slate-50">Falar com vendas</a>
+      </article>
+
+      <!-- Empresarial Plus (mín. 6) -->
+      <article class="card rounded-2xl bg-white border border-slate-200 p-7" data-cat="empresarial">
+        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL</div>
+        <h3 class="mt-2 font-semibold text-xl">Empresarial Plus</h3>
+        <p class="text-slate-500 text-sm">mínimo de 6 funcionários</p>
+        <ul class="mt-4 space-y-2 text-slate-700 text-sm">
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Atendimentos ilimitados com médicos especializados e Clínico Geral</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Sem carência</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Consultas com Nutricionista</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Consultas com Psicólogo</li>
+          <li class="flex gap-2"><i class="fa-solid fa-link text-emerald-600 mt-1"></i><a class="underline hover:no-underline" href="index.html#especialidades">Clique aqui e veja todas Especialidades para seus Colaboradores</a></li>
+        </ul>
+        <a href="mailto:contato@medicosconsultasonline.com.br" class="mt-7 inline-flex justify-center w-full px-4 py-3 rounded-lg border border-slate-300 text-slate-800 font-medium hover:bg-slate-50">Falar com vendas</a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contratar" class="py-14 bg-gradient-to-br from-emerald-600 to-emerald-700 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold">Pronto para começar?</h2>
+      <p class="mt-2 text-emerald-100">Atendimento 24h, sem carência, com receitas e atestados digitais.</p>
+      <div class="mt-7 flex flex-wrap justify-center gap-3">
+        <a href="index.html#contrate" class="px-6 py-3 rounded-full bg-white text-emerald-700 font-semibold shadow-soft hover:bg-emerald-50"><i class="fa-solid fa-calendar-check mr-2"></i>Contratar agora</a>
+        <a href="index.html#faq" class="px-6 py-3 rounded-full bg-white/10 text-white hover:bg-white/20"><i class="fa-solid fa-circle-question mr-2"></i>Tirar dúvidas</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div>
+        <h4 class="text-lg font-semibold">Médicos Consultas Online</h4>
+        <p class="mt-2 text-gray-400 text-sm">N. Pero Negócios Inovadores LTDA<br>CNPJ: 28.590.077/0001-88</p>
+      </div>
+      <div>
+        <h5 class="font-semibold">Contato</h5>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a class="hover:text-emerald-400 transition" href="tel:+5551995095554">(51) 99509-5554</a></li>
+          <li><a class="hover:text-emerald-400 transition" href="mailto:atendimento@medicosconsultasonline.com.br">atendimento@medicosconsultasonline.com.br</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-semibold">Informações</h5>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a class="hover:text-emerald-400 transition" href="index.html#termos">Termos de aceite</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-semibold">Redes sociais</h5>
+        <div class="mt-3 flex flex-wrap gap-3">
+          <a href="#" aria-label="Instagram" class="inline-flex items-center gap-2 rounded-lg border border-gray-700 px-3 py-2 hover:bg-gray-800 transition">
+            <i class="fa-brands fa-instagram"></i><span class="text-sm">Instagram</span>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="inline-flex items-center gap-2 rounded-lg border border-gray-700 px-3 py-2 hover:bg-gray-800 transition">
+            <i class="fa-brands fa-linkedin"></i><span class="text-sm">LinkedIn</span>
+          </a>
+          <a href="#" aria-label="WhatsApp" class="inline-flex items-center gap-2 rounded-lg border border-gray-700 px-3 py-2 hover:bg-gray-800 transition">
+            <i class="fa-brands fa-whatsapp"></i><span class="text-sm">WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-sm text-gray-400 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <span>© 2022–<span data-year></span>, Médicos Consultas Online. Todos os direitos reservados.</span>
+        <a href="#inicio" class="hover:text-emerald-400 transition inline-flex items-center">Voltar ao topo <i class="fa-solid fa-arrow-up ml-2 text-xs"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navegação mobile
+    (function(){
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if(menuBtn && mobileMenu){
+        menuBtn.addEventListener('click', ()=>{
+          mobileMenu.classList.toggle('hidden');
+          const icon = menuBtn.querySelector('i');
+          if(icon){ icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times'); }
+        });
+      }
+    })();
+
+    // Filtro
+    const chips = [...document.querySelectorAll('.chip')];
+    const cards = [...document.querySelectorAll('[data-cat]')];
+    function applyFilter(cat){
+      cards.forEach(c=>{
+        const ok = (cat==='all') || c.dataset.cat===cat;
+        c.classList.toggle('hidden', !ok);
+      });
+      chips.forEach(ch=> ch.classList.toggle('active', ch.dataset.filter===cat));
+    }
+    chips.forEach(ch => ch.addEventListener('click', ()=>applyFilter(ch.dataset.filter)));
+    applyFilter('all');
+
+  // Ano
+  document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
+  </script>
+</body>
+</html>

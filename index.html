@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Médicos Consultas Online — Sua saúde a um toque de distância</title>
+  <meta name="description" content="Telemedicina 24 horas por dia, 7 dias por semana. Fale com especialistas de diversas áreas sem sair de casa.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Poppins', 'ui-sans-serif', 'system-ui'] },
+          colors: {
+            brand: {
+              50: '#f2fbf5',
+              100: '#e4f7ea',
+              200: '#c5efcf',
+              300: '#92e1a6',
+              400: '#4fcb76',
+              500: '#22b24f',
+              600: '#1a9141',
+              700: '#167235',
+              800: '#135a2c',
+              900: '#0f4825',
+            },
+            emerald: { 500: '#10b981' }
+          },
+          boxShadow: {
+            soft: '0 8px 24px rgba(0,0,0,0.05)',
+            medium: '0 4px 16px rgba(0,0,0,0.1)',
+            glow: '0 0 20px rgba(16,185,129,0.2)',
+          },
+          backgroundImage: {
+            'hero-radial': 'radial-gradient(1000px 500px at 75% 25%, rgba(16,185,129,0.2), transparent 50%), radial-gradient(700px 350px at 25% 65%, rgba(34,178,79,0.2), transparent 60%)',
+            'gradient-primary': 'linear-gradient(135deg, #10b981 0%, #22b24f 100%)',
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.6s ease-out',
+            'slide-up': 'slideUp 0.6s ease-out',
+            'pulse-glow': 'pulseGlow 2.5s infinite',
+          },
+          keyframes: {
+            fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+            slideUp: { '0%': { transform: 'translateY(15px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+            pulseGlow: { '0%, 100%': { opacity: '1' }, '50%': { opacity: '0.85' } }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .navlink, .mobilelink { transition: all 0.3s ease; }
+    .section-padding { padding: 4rem 0; }
+    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+    .sticky-nav { position: sticky; top: 0; z-index: 1000; }
+    .feature-icon { width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+    .specialty-card { transition: all 0.3s ease; }
+    .specialty-card:hover { transform: scale(1.03); }
+    .carousel-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.5s ease; }
+    .carousel-slide.active { opacity: 1; }
+    .dot { width: 12px; height: 12px; border-radius: 9999px; background: #e2e8f0; }
+    .dot.active { background: #10b981; }
+    @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+    @keyframes slideInLeft { from { transform: translateX(-20px); opacity: 0 } to { transform: none; opacity: 1 } }
+    @keyframes slideInRight { from { transform: translateX(20px); opacity: 0 } to { transform: none; opacity: 1 } }
+    .carousel-overlay {
+      position: absolute; inset: 0;
+      display: flex; align-items: flex-end; justify-content: flex-start;
+      padding: clamp(1.5rem, 5vw, 3.5rem);
+      background: linear-gradient(90deg, rgba(0,0,0,0.4), rgba(0,0,0,0) 60%);
+      pointer-events: auto;
+    }
+    @media (max-width: 640px) {
+      .section-padding { padding: 2.5rem 0; }
+      .hero-content { text-align: center; }
+      .carousel { height: 320px; }
+    }
+    @media (min-width: 641px) and (max-width: 1024px) {
+      .carousel { height: 400px; }
+    }
+    @media (min-width: 1025px) {
+      .carousel { height: 480px; }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans">
+  <!-- Topbar -->
+  <div class="bg-emerald-600 text-white text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex flex-wrap items-center gap-4">
+        <span class="inline-flex items-center gap-2"><i class="fas fa-phone w-4 h-4"></i>(51) 99509-5554</span>
+        <a href="mailto:contato@medicosconsultasonline.com.br" class="inline-flex items-center gap-2 hover:underline">
+          <i class="fas fa-envelope w-4 h-4"></i>contato@medicosconsultasonline.com.br
+        </a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="#cliente" class="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 transition font-medium">Área do Cliente</a>
+        <a href="#parceiro" class="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 transition font-medium">Quero Virar Parceiro</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header / Navbar -->
+  <header class="sticky-nav bg-white/95 backdrop-blur-sm shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="#inicio" class="flex items-center gap-3">
+          <img src="assets/img/logo.png" alt="Médicos Consultas Online" class="h-12 w-auto object-contain" loading="eager" onerror="this.src='https://placehold.co/96x96?text=Logo';">
+        </a>
+        <nav class="hidden lg:flex items-center gap-6">
+          <a href="#inicio" class="navlink text-gray-600 hover:text-emerald-600 font-medium text-sm">Início</a>
+          <a href="#como-funciona" class="navlink text-gray-600 hover:text-emerald-600 font-medium text-sm">Como Funciona</a>
+          <a href="#especialidades" class="navlink text-gray-600 hover:text-emerald-600 font-medium text-sm">Especialidades</a>
+          <a href="planos.html" class="navlink text-gray-600 hover:text-emerald-600 font-medium text-sm">Planos</a>
+          <a href="quem-somos.html" class="navlink text-gray-600 hover:text-emerald-600 font-medium text-sm">Quem Somos</a>
+          <a href="#faq" class="navlink text-gray-600 hover:text-emerald-600 font-medium text-sm">FAQ</a>
+        </nav>
+        <div class="hidden lg:flex">
+          <a href="#contrate" class="inline-flex items-center rounded-full bg-gradient-primary text-white px-5 py-2.5 font-medium shadow-md hover:shadow-lg transition-all">Contrate Agora</a>
+        </div>
+        <button id="menuBtn" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition">
+          <i class="fas fa-bars text-gray-600 text-lg"></i>
+        </button>
+      </div>
+      <div id="mobileMenu" class="lg:hidden hidden bg-white border-t border-gray-100">
+        <div class="flex flex-col gap-2 p-4">
+          <a class="mobilelink px-4 py-2 hover:bg-gray-100 rounded-lg font-medium text-gray-600" href="#inicio">Início</a>
+          <a class="mobilelink px-4 py-2 hover:bg-gray-100 rounded-lg font-medium text-gray-600" href="#como-funciona">Como Funciona</a>
+          <a class="mobilelink px-4 py-2 hover:bg-gray-100 rounded-lg font-medium text-gray-600" href="#especialidades">Especialidades</a>
+          <a class="mobilelink px-4 py-2 hover:bg-gray-100 rounded-lg font-medium text-gray-600" href="planos.html">Planos</a>
+          <a class="mobilelink px-4 py-2 hover:bg-gray-100 rounded-lg font-medium text-gray-600" href="quem-somos.html">Quem Somos</a>
+          <a class="mobilelink px-4 py-2 hover:bg-gray-100 rounded-lg font-medium text-gray-600" href="#faq">FAQ</a>
+          <a class="inline-flex items-center justify-center rounded-full bg-gradient-primary text-white px-5 py-2.5 font-medium mt-2 shadow-md hover:shadow-lg transition" href="#contrate">Contrate Agora</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero / Carrossel -->
+  <section id="inicio" class="section-padding bg-gradient-to-br from-emerald-50 to-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="relative rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+        <div class="carousel relative w-full">
+          <!-- Slide 1 -->
+          <div class="carousel-slide active">
+            <!-- imagens desktop e mobile -->
+            <img src="assets/img/slide1.png" alt="Slide 1" class="object-cover w-full h-full desktop-img" onerror="this.src='https://placehold.co/1200x600?text=slide1.png+nao+encontrado';">
+            <img src="assets/img/slide1-mobile.png" alt="Slide 1 Mobile" class="object-cover w-full h-full mobile-img hidden" onerror="if(window.isMobile) this.src='https://placehold.co/600x800?text=slide1-mobile.png+nao+encontrado';">
+            <div class="carousel-overlay text-white">
+              <div class="space-y-4">
+                <h2 class="text-2xl sm:text-3xl font-bold">Consulta médica a qualquer hora</h2>
+                <a href="#download" class="inline-flex items-center rounded-full bg-gradient-primary text-white px-6 py-3 font-medium shadow-md hover:shadow-lg transition">
+                  <i class="fa-solid fa-download mr-2"></i> Baixar aplicativo
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="carousel-slide">
+            <!-- imagens desktop e mobile -->
+            <img src="assets/img/slide2.png" alt="Slide 2" class="object-cover w-full h-full desktop-img" onerror="this.src='https://placehold.co/1200x600?text=slide2.png+nao+encontrado';">
+            <img src="assets/img/slide2-mobile.png" alt="Slide 2 Mobile" class="object-cover w-full h-full mobile-img hidden" onerror="if(window.isMobile) this.src='https://placehold.co/600x800?text=slide2-mobile.png+nao+encontrado';">
+            <div class="carousel-overlay text-white">
+              <div class="space-y-4">
+                <h2 class="text-2xl sm:text-3xl font-bold">Planos que cabem no seu bolso</h2>
+                <div class="flex flex-wrap gap-3">
+                  <a href="planos.html" class="inline-flex items-center rounded-full bg-white text-emerald-700 px-6 py-3 font-medium shadow-md hover:bg-gray-100 transition">
+                    <i class="fa-solid fa-heart mr-2"></i> Ver planos
+                  </a>
+                  <a href="#como-funciona" class="inline-flex items-center rounded-full bg-white/20 backdrop-blur px-6 py-3 font-medium hover:bg-white/30 transition">
+                    <i class="fa-solid fa-circle-question mr-2"></i> Como funciona
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="carousel-slide">
+            <!-- imagens desktop e mobile -->
+            <img src="assets/img/slide3.png" alt="Slide 3" class="object-cover w-full h-full desktop-img" onerror="this.src='https://placehold.co/1200x600?text=slide3.png+nao+encontrado';">
+            <img src="assets/img/slide3-mobile.png" alt="Slide 3 Mobile" class="object-cover w-full h-full mobile-img hidden" onerror="if(window.isMobile) this.src='https://placehold.co/600x800?text=slide3-mobile.png+nao+encontrado';">
+            <div class="carousel-overlay text-white">
+              <div class="space-y-4">
+                <h2 class="text-2xl sm:text-3xl font-bold">Agende com especialistas</h2>
+                <a href="#contrate" class="inline-flex items-center rounded-full bg-gradient-primary text-white px-6 py-3 font-medium shadow-md hover:shadow-lg transition">
+                  <i class="fa-solid fa-calendar-plus mr-2"></i> Agendar consulta
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Controles -->
+          <button aria-label="Anterior" class="prev absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-700 w-12 h-12 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition">
+            <i class="fa-solid fa-chevron-left text-lg"></i>
+          </button>
+          <button aria-label="Próximo" class="next absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-700 w-12 h-12 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition">
+            <i class="fa-solid fa-chevron-right text-lg"></i>
+          </button>
+          <!-- Dots -->
+          <div class="dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2.5">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vantagens -->
+  <section class="section-padding bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">Vantagens do atendimento online</h2>
+        <p class="mt-3 text-gray-600 text-lg">Cuidado médico especializado no conforto da sua casa</p>
+      </div>
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="card-hover rounded-2xl bg-white border border-gray-100 p-6 shadow-sm hover:shadow-md">
+          <div class="feature-icon bg-emerald-100 text-emerald-600"><i class="fas fa-clock text-xl"></i></div>
+          <h3 class="mt-4 font-semibold text-lg">24 horas por dia</h3>
+          <p class="mt-2 text-gray-600">Consultas médicas especializadas a qualquer momento, 7 dias por semana.</p>
+        </div>
+        <div class="card-hover rounded-2xl bg-white border border-gray-100 p-6 shadow-sm hover:shadow-md">
+          <div class="feature-icon bg-emerald-100 text-emerald-600"><i class="fas fa-home text-xl"></i></div>
+          <h3 class="mt-4 font-semibold text-lg">No conforto de casa</h3>
+          <p class="mt-2 text-gray-600">Atendimento com especialistas onde você estiver.</p>
+        </div>
+        <div class="card-hover rounded-2xl bg-white border border-gray-100 p-6 shadow-sm hover:shadow-md">
+          <div class="feature-icon bg-emerald-100 text-emerald-600"><i class="fas fa-car text-xl"></i></div>
+          <h3 class="mt-4 font-semibold text-lg">Sem deslocamentos</h3>
+          <p class="mt-2 text-gray-600">Economize tempo e dinheiro sem precisar se deslocar.</p>
+        </div>
+        <div class="card-hover rounded-2xl bg-white border border-gray-100 p-6 shadow-sm hover:shadow-md">
+          <div class="feature-icon bg-emerald-100 text-emerald-600"><i class="fas fa-shield-alt text-xl"></i></div>
+          <h3 class="mt-4 font-semibold text-lg">Sem carência</h3>
+          <p class="mt-2 text-gray-600">Use imediatamente após a contratação.</p>
+        </div>
+        <div class="card-hover rounded-2xl bg-white border border-gray-100 p-6 shadow-sm hover:shadow-md">
+          <div class="feature-icon bg-emerald-100 text-emerald-600"><i class="fas fa-tag text-xl"></i></div>
+          <h3 class="mt-4 font-semibold text-lg">Preço acessível</h3>
+          <p class="mt-2 text-gray-600">Planos que cabem no seu orçamento.</p>
+        </div>
+        <div class="card-hover rounded-2xl bg-white border border-gray-100 p-6 shadow-sm hover:shadow-md">
+          <div class="feature-icon bg-emerald-100 text-emerald-600"><i class="fas fa-users text-xl"></i></div>
+          <h3 class="mt-4 font-semibold text-lg">Toda a família</h3>
+          <p class="mt-2 text-gray-600">Cobertura para dependentes com histórico centralizado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Especialidades -->
+  <section id="especialidades" class="section-padding bg-gradient-to-br from-emerald-50 to-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">11+ especialidades <span class="text-emerald-600">ao seu alcance</span></h2>
+        <p class="mt-3 text-gray-600 text-lg">Conecte-se com especialistas qualificados em minutos, 24/7.</p>
+      </div>
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 text-center shadow-sm hover:shadow-md">
+          <div class="mx-auto w-14 h-14 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center"><i class="fas fa-heart-pulse text-xl"></i></div>
+          <p class="mt-4 font-semibold text-lg">Cardiologia</p>
+          <p class="mt-2 text-gray-600 text-sm">Cuidando da saúde do seu coração</p>
+        </div>
+        <div class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 text-center shadow-sm hover:shadow-md">
+          <div class="mx-auto w-14 h-14 rounded-lg bg-pink-100 text-pink-600 flex items-center justify-center"><i class="fas fa-allergies text-xl"></i></div>
+          <p class="mt-4 font-semibold text-lg">Dermatologia</p>
+          <p class="mt-2 text-gray-600 text-sm">Cuidados com a pele e dermatoses</p>
+        </div>
+        <div class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 text-center shadow-sm hover:shadow-md">
+          <div class="mx-auto w-14 h-14 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center"><i class="fas fa-brain text-xl"></i></div>
+          <p class="mt-4 font-semibold text-lg">Neurologia</p>
+          <p class="mt-2 text-gray-600 text-sm">Sistema nervoso e suas doenças</p>
+        </div>
+        <div class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 text-center shadow-sm hover:shadow-md">
+          <div class="mx-auto w-14 h-14 rounded-lg bg-cyan-100 text-cyan-600 flex items-center justify-center"><i class="fas fa-baby text-xl"></i></div>
+          <p class="mt-4 font-semibold text-lg">Pediatria</p>
+          <p class="mt-2 text-gray-600 text-sm">Cuidados com a saúde infantil</p>
+        </div>
+        <div class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 text-center shadow-sm hover:shadow-md">
+          <div class="mx-auto w-14 h-14 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center"><i class="fas fa-brain text-xl"></i></div>
+          <p class="mt-4 font-semibold text-lg">Psicologia</p>
+          <p class="mt-2 text-gray-600 text-sm">Saúde mental e bem-estar</p>
+        </div>
+        <div class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 text-center shadow-sm hover:shadow-md">
+          <div class="mx-auto w-14 h-14 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center"><i class="fas fa-head-side-virus text-xl"></i></div>
+          <p class="mt-4 font-semibold text-lg">Psiquiatria</p>
+          <p class="mt-2 text-gray-600 text-sm">Diagnóstico e tratamento mental</p>
+        </div>
+        <div class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 text-center shadow-sm hover:shadow-md">
+          <div class="mx-auto w-14 h-14 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center"><i class="fas fa-apple-alt text-xl"></i></div>
+          <p class="mt-4 font-semibold text-lg">Nutricionista</p>
+          <p class="mt-2 text-gray-600 text-sm">Alimentação saudável</p>
+        </div>
+        <div class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 text-center shadow-sm hover:shadow-md">
+          <div class="mx-auto w-14 h-14 rounded-lg bg-teal-100 text-teal-600 flex items-center justify-center"><i class="fas fa-procedures text-xl"></i></div>
+          <p class="mt-4 font-semibold text-lg">Urologia</p>
+          <p class="mt-2 text-gray-600 text-sm">Sistema urinário e reprodutor</p>
+        </div>
+        <div class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 text-center shadow-sm hover:shadow-md">
+          <div class="mx-auto w-14 h-14 rounded-lg bg-pink-100 text-pink-600 flex items-center justify-center"><i class="fas fa-female text-xl"></i></div>
+          <p class="mt-4 font-semibold text-lg">Ginecologia</p>
+          <p class="mt-2 text-gray-600 text-sm">Saúde feminina</p>
+        </div>
+        <div class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 text-center shadow-sm hover:shadow-md">
+          <div class="mx-auto w-14 h-14 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center"><i class="fas fa-wheelchair text-xl"></i></div>
+          <p class="mt-4 font-semibold text-lg">Geriatria</p>
+          <p class="mt-2 text-gray-600 text-sm">Saúde do idoso</p>
+        </div>
+        <div class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 text-center shadow-sm hover:shadow-md">
+          <div class="mx-auto w-14 h-14 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center"><i class="fas fa-user-md text-xl"></i></div>
+          <p class="mt-4 font-semibold text-lg">Clínico Geral</p>
+          <p class="mt-2 text-gray-600 text-sm">Atenção primária à saúde</p>
+        </div>
+      </div>
+      <div class="mt-12 text-center">
+        <a href="#contrate" class="inline-flex items-center rounded-full bg-gradient-primary text-white px-6 py-3 font-medium shadow-md hover:shadow-lg transition">
+          <i class="fas fa-calendar-plus mr-2"></i> Agendar Consulta com Especialista
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Como Funciona -->
+  <section id="como-funciona" class="section-padding bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">Como Funciona</h2>
+        <p class="mt-3 text-gray-600 text-lg">Um processo simples e eficiente para seu atendimento médico</p>
+      </div>
+      <div class="mt-12 relative">
+        <div class="absolute left-1/2 transform -translate-x-1/2 top-12 bottom-12 w-1 bg-emerald-100 hidden lg:block"></div>
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="flex flex-col items-center text-center">
+            <div class="w-16 h-16 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xl shadow-sm">1</div>
+            <h3 class="mt-4 font-semibold text-lg">Cadastro</h3>
+            <p class="mt-2 text-gray-600">Informe seus dados, aceite os termos e escolha um plano.</p>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <div class="w-16 h-16 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xl shadow-sm">2</div>
+            <h3 class="mt-4 font-semibold text-lg">Triagem</h3>
+            <p class="mt-2 text-gray-600">Identificamos a melhor especialidade para você.</p>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <div class="w-16 h-16 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xl shadow-sm">3</div>
+            <h3 class="mt-4 font-semibold text-lg">Consulta</h3>
+            <p class="mt-2 text-gray-600">Atendimento por vídeo/áudio com orientações e receitas.</p>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <div class="w-16 h-16 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xl shadow-sm">4</div>
+            <h3 class="mt-4 font-semibold text-lg">Acompanhamento</h3>
+            <p class="mt-2 text-gray-600">Revisões, exames e histórico sempre à mão.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parceiros -->
+  <section id="parceiros" class="section-padding bg-gradient-to-br from-emerald-50 to-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">Conheça nossos parceiros</h2>
+        <p class="mt-3 text-gray-600 text-lg">Conexões estratégicas que ampliam a qualidade do seu atendimento.</p>
+      </div>
+      <div class="mt-12 grid gap-6 sm:grid-cols-2">
+        <article class="group relative rounded-2xl bg-white border border-gray-100 p-6 shadow-sm hover:shadow-md transition-all">
+          <div class="flex flex-col sm:flex-row items-center gap-6">
+            <div class="shrink-0 rounded-lg bg-gray-50 border border-gray-100 p-4 w-32 h-20 flex items-center justify-center">
+              <img src="assets/img/REGIONAL CERTIFICADORA.png" alt="Regional Certificadora" class="max-h-12 w-auto object-contain group-hover:scale-105 transition" onerror="this.src='https://placehold.co/280x80?text=Logo+Parceiro';">
+            </div>
+            <div class="text-center sm:text-left">
+              <h3 class="font-semibold text-lg text-gray-900">Regional Certificadora</h3>
+              <p class="mt-2 text-gray-600 text-sm">Emissão de certificados digitais para pessoas físicas e jurídicas nos modelos A1 e A3.</p>
+            </div>
+          </div>
+        </article>
+        <article class="group relative rounded-2xl bg-white border border-gray-100 p-6 shadow-sm hover:shadow-md transition-all">
+          <div class="flex flex-col sm:flex-row items-center gap-6">
+            <div class="shrink-0 rounded-lg bg-gray-50 border border-gray-100 p-4 w-32 h-20 flex items-center justify-center">
+              <img src="assets/img/SALAS E NEGOCIOS.png" alt="Salas & Negócios Coworking" class="max-h-12 w-auto object-contain group-hover:scale-105 transition" onerror="this.src='https://placehold.co/280x80?text=Logo+Parceiro';">
+            </div>
+            <div class="text-center sm:text-left">
+              <h3 class="font-semibold text-lg text-gray-900">Salas & Negócios Coworking</h3>
+              <p class="mt-2 text-gray-600 text-sm">Endereço fiscal e abertura rápida de empresas em Santa Catarina.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="mt-8 text-center">
+        <p class="text-gray-500 text-sm">Quer ser nosso parceiro? <a href="#parceiro" class="text-emerald-600 font-medium hover:underline">Fale com a gente</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div>
+        <h4 class="text-lg font-semibold">Médicos Consultas Online</h4>
+        <p class="mt-2 text-gray-400 text-sm">N. Pero Negócios Inovadores LTDA<br>CNPJ: 28.590.077/0001-88</p>
+      </div>
+      <div>
+        <h5 class="font-semibold">Contato</h5>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a class="hover:text-emerald-400 transition" href="tel:+5551995095554">(51) 99509-5554</a></li>
+          <li><a class="hover:text-emerald-400 transition" href="mailto:atendimento@medicosconsultasonline.com.br">atendimento@medicosconsultasonline.com.br</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-semibold">Informações</h5>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a class="hover:text-emerald-400 transition" href="index.html#termos">Termos de aceite</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-semibold">Redes sociais</h5>
+        <div class="mt-3 flex flex-wrap gap-3">
+          <a href="#" aria-label="Instagram" class="inline-flex items-center gap-2 rounded-lg border border-gray-700 px-3 py-2 hover:bg-gray-800 transition">
+            <i class="fa-brands fa-instagram"></i><span class="text-sm">Instagram</span>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="inline-flex items-center gap-2 rounded-lg border border-gray-700 px-3 py-2 hover:bg-gray-800 transition">
+            <i class="fa-brands fa-linkedin"></i><span class="text-sm">LinkedIn</span>
+          </a>
+          <a href="#" aria-label="WhatsApp" class="inline-flex items-center gap-2 rounded-lg border border-gray-700 px-3 py-2 hover:bg-gray-800 transition">
+            <i class="fa-brands fa-whatsapp"></i><span class="text-sm">WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-sm text-gray-400 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <span>© 2022–<span data-year></span>, Médicos Consultas Online. Todos os direitos reservados.</span>
+        <a href="#inicio" class="hover:text-emerald-400 transition inline-flex items-center">Voltar ao topo <i class="fa-solid fa-arrow-up ml-2 text-xs"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Navegação mobile
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        const icon = menuBtn.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      });
+    }
+
+    // Ano no footer
+    document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
+
+    // Scroll ativo no menu
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('header a.navlink, .mobilelink');
+    function highlightNavLink() {
+      let scrollY = window.pageYOffset;
+      sections.forEach(section => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 80;
+        const sectionId = section.getAttribute('id');
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+          navLinks.forEach(link => {
+            link.classList.remove('text-emerald-600');
+            if (link.getAttribute('href') === `#${sectionId}`) {
+              link.classList.add('text-emerald-600');
+            }
+          });
+        }
+      });
+    }
+    window.addEventListener('scroll', highlightNavLink);
+
+    // Animação de elementos ao scroll
+    function animateOnScroll() {
+      const elements = document.querySelectorAll('.specialty-card, .card-hover');
+      elements.forEach(el => {
+        const pos = el.getBoundingClientRect().top;
+        const screen = window.innerHeight / 1.2;
+        if (pos < screen) el.classList.add('animate-slide-up');
+      });
+    }
+    window.addEventListener('scroll', animateOnScroll);
+    animateOnScroll();
+
+    // Responsividade de imagens do carrossel (desktop x mobile)
+    function isMobileViewport() {
+      return window.matchMedia('(max-width: 640px)').matches;
+    }
+    function updateResponsiveImages() {
+      const isMobile = isMobileViewport();
+      window.isMobile = isMobile; // mantém compatibilidade com onerror nas imagens
+      const mobileImages = document.querySelectorAll('.mobile-img');
+      const desktopImages = document.querySelectorAll('.desktop-img');
+      mobileImages.forEach(img => img.classList.toggle('hidden', !isMobile));
+      desktopImages.forEach(img => img.classList.toggle('hidden', isMobile));
+    }
+
+    // Carrossel
+    (function(){
+      const root = document.querySelector('.carousel');
+      if (!root) return;
+      const slides = Array.from(root.querySelectorAll('.carousel-slide'));
+      const dots = Array.from(root.querySelectorAll('.dots .dot'));
+      const btnPrev = root.querySelector('.prev');
+      const btnNext = root.querySelector('.next');
+      let i = 0, timer;
+
+      function show(idx) {
+        i = (idx + slides.length) % slides.length;
+        slides.forEach((s, k) => s.classList.toggle('active', k === i));
+        dots.forEach((d, k) => d.classList.toggle('active', k === i));
+      }
+      function next() { show(i + 1); restart(); }
+      function prev() { show(i - 1); restart(); }
+      function restart() {
+        clearInterval(timer);
+        timer = setInterval(next, 5000);
+      }
+
+      btnPrev.addEventListener('click', prev);
+      btnNext.addEventListener('click', next);
+      dots.forEach((d, k) => d.addEventListener('click', () => { show(k); restart(); }));
+
+      let startX = 0;
+      root.addEventListener('touchstart', e => startX = e.touches[0].clientX, { passive: true });
+      root.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - startX;
+        if (dx > 50) prev();
+        if (dx < -50) next();
+      });
+
+      show(0);
+      restart();
+
+      // aplica imagens corretas conforme viewport e atualiza no resize
+      updateResponsiveImages();
+      window.addEventListener('resize', updateResponsiveImages);
+    })();
+  </script>
+</body>
+</html>
