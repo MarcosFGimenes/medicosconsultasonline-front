@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seja parceiro — Médicos Consultas Online</title>
+  <meta name="description" content="Conheça como funciona o programa de parceiros da Médicos Consultas Online e cadastre-se para oferecer telemedicina com a nossa equipe." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Poppins','ui-sans-serif','system-ui'] },
+          colors: {
+            brand: { 50:'#f2fbf5',100:'#e4f7ea',200:'#c5efcf',300:'#92e1a6',400:'#4fcb76',500:'#22b24f',600:'#10b981',700:'#059669',800:'#135a2c',900:'#0f4825' },
+            emerald: { 500:'#10b981' }
+          },
+          boxShadow: {
+            soft:'0 12px 30px rgba(0,0,0,.08)',
+            medium:'0 16px 36px rgba(16,185,129,.18)'
+          },
+          backgroundImage: {
+            'gradient-primary':'linear-gradient(135deg, #10b981 0%, #22b24f 100%)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .navlink, .mobilelink { transition: all 0.3s ease; }
+    .sticky-nav { position: sticky; top: 0; z-index: 1000; }
+  </style>
+</head>
+<body class="bg-emerald-50 text-slate-800">
+
+  <!-- Topbar -->
+  <div class="bg-emerald-600 text-white text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="hidden sm:flex flex-wrap items-center gap-4">
+        <span class="inline-flex items-center gap-2"><i class="fas fa-phone w-4 h-4"></i>(51) 99509-5554</span>
+        <a href="mailto:contato@medicosconsultasonline.com.br" class="inline-flex items-center gap-2 hover:underline">
+          <i class="fas fa-envelope w-4 h-4"></i>
+          contato@medicosconsultasonline.com.br
+        </a>
+      </div>
+      <div class="flex w-full sm:w-auto items-center justify-center sm:justify-end gap-3">
+        <a href="#cliente" class="px-3 py-1 rounded-full bg-white/15 hover:bg-white/25 transition">Área do Cliente</a>
+        <a href="planos.html" class="px-3 py-1 rounded-full bg-white/15 hover:bg-white/25 transition">Ver Planos</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header / Navbar -->
+  <header class="sticky-nav bg-white/90 backdrop-blur border-b border-emerald-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html#inicio" class="flex items-center gap-2">
+          <div class="w-20 h-20 relative flex items-center justify-center">
+            <img src="assets/img/logo.png"
+                 alt="Médicos Consultas Online"
+                 class="max-w-full max-h-full object-contain"
+                 loading="eager"
+                 onerror="this.onerror=null;this.src='https://placehold.co/96x96?text=Logo';">
+          </div>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="index.html#inicio" class="navlink text-slate-700 hover:text-emerald-700 transition font-medium">Início</a>
+          <a href="index.html#como-funciona" class="navlink text-slate-700 hover:text-emerald-700 transition font-medium">Como Funciona</a>
+          <a href="index.html#especialidades" class="navlink text-slate-700 hover:text-emerald-700 transition font-medium">Especialidades</a>
+          <a href="planos.html" class="navlink text-slate-700 hover:text-emerald-700 transition font-medium">Planos</a>
+          <a href="parceiros.html" class="navlink text-emerald-700 font-semibold">Seja parceiro</a>
+        </nav>
+
+        <div class="hidden md:flex">
+          <a href="#form-parceiro" class="inline-flex items-center rounded-full bg-gradient-primary text-white px-5 py-2.5 font-medium shadow-soft hover:shadow-medium transition-all duration-300">Quero me cadastrar</a>
+        </div>
+
+        <button id="menuBtn" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-emerald-100 hover:bg-emerald-50 transition">
+          <i class="fas fa-bars text-emerald-700"></i>
+        </button>
+      </div>
+      <div id="mobileMenu" class="md:hidden hidden pb-4 pt-2">
+        <div class="grid gap-2">
+          <a class="mobilelink rounded-lg px-3 py-2 hover:bg-emerald-50 font-medium" href="index.html#inicio">Início</a>
+          <a class="mobilelink rounded-lg px-3 py-2 hover:bg-emerald-50 font-medium" href="index.html#como-funciona">Como Funciona</a>
+          <a class="mobilelink rounded-lg px-3 py-2 hover:bg-emerald-50 font-medium" href="index.html#especialidades">Especialidades</a>
+          <a class="mobilelink rounded-lg px-3 py-2 hover:bg-emerald-50 font-medium" href="planos.html">Planos</a>
+          <a class="mobilelink rounded-lg px-3 py-2 hover:bg-emerald-50 font-medium" href="parceiros.html">Seja parceiro</a>
+          <a class="inline-flex items-center justify-center rounded-lg bg-gradient-primary text-white px-4 py-2.5 font-medium mt-2 shadow-soft hover:shadow-medium transition" href="#form-parceiro">Quero me cadastrar</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-white via-emerald-50 to-emerald-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] items-center">
+          <div class="space-y-6">
+            <span class="inline-flex items-center gap-2 rounded-full bg-white/70 text-emerald-700 px-4 py-1 text-sm font-medium">
+              Programa de parcerias
+            </span>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900">Amplie seus serviços com a telemedicina da Médicos Consultas Online</h1>
+            <p class="text-lg text-slate-600">
+              Texto provisório: destaque os benefícios para clínicas, consultórios, empresas e infoprodutores que desejam oferecer
+              consultas médicas 24h para seus clientes. Substitua quando o cliente enviar o conteúdo definitivo.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <a href="#form-parceiro" class="inline-flex items-center rounded-full bg-gradient-primary text-white px-6 py-3 font-semibold shadow-soft hover:shadow-medium transition-transform hover:-translate-y-0.5">
+                <i class="fa-solid fa-handshake mr-2"></i> Quero ser parceiro
+              </a>
+              <a href="mailto:contato@medicosconsultasonline.com.br" class="inline-flex items-center rounded-full border border-emerald-200 bg-white px-6 py-3 font-semibold text-emerald-700 hover:bg-emerald-50 transition">
+                <i class="fa-solid fa-envelope mr-2"></i> Conversar com o time
+              </a>
+            </div>
+          </div>
+          <div class="rounded-3xl border border-emerald-100 bg-white/95 shadow-soft p-8 space-y-5">
+            <div class="flex items-center justify-between">
+              <h2 class="text-lg font-semibold text-slate-900">Benefícios principais</h2>
+              <span class="inline-flex items-center gap-2 rounded-full bg-emerald-100 text-emerald-700 px-3 py-1 text-xs font-semibold"><i class="fa-solid fa-star"></i> Destaque</span>
+            </div>
+            <ul class="space-y-3 text-sm text-slate-600">
+              <li class="flex gap-3"><i class="fa-solid fa-circle-check text-emerald-500 mt-1"></i>White-label opcional e comunicação personalizada.</li>
+              <li class="flex gap-3"><i class="fa-solid fa-circle-check text-emerald-500 mt-1"></i>Dashboard com relatórios de uso e indicadores de saúde.</li>
+              <li class="flex gap-3"><i class="fa-solid fa-circle-check text-emerald-500 mt-1"></i>Equipe de onboarding para seus clientes.</li>
+            </ul>
+            <p class="text-xs uppercase tracking-wide text-slate-400">Espaço reservado para inserir diferenciais enviados pelo cliente.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tipos de parceria -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-10 lg:grid-cols-3">
+          <div class="lg:col-span-1 space-y-5">
+            <h2 class="text-2xl font-bold text-slate-900">Modelos de parceria</h2>
+            <p class="text-slate-600 text-sm">
+              Seção com texto provisório descrevendo os tipos de parceria. Atualize quando o cliente enviar informações específicas
+              sobre comissionamento, integrações ou planos corporativos.
+            </p>
+          </div>
+          <div class="lg:col-span-2 grid gap-6 sm:grid-cols-2">
+            <article class="rounded-2xl border border-emerald-100 bg-emerald-50/70 p-6 shadow-sm">
+              <h3 class="text-lg font-semibold text-emerald-800">Clínicas e consultórios</h3>
+              <p class="mt-2 text-sm text-slate-600">Amplie seu portfólio com telemedicina sem investir em tecnologia própria.</p>
+              <ul class="mt-4 space-y-2 text-sm text-slate-600">
+                <li class="flex gap-2"><i class="fa-solid fa-circle text-emerald-500 mt-1 text-xs"></i>Suporte para agendamento 24/7</li>
+                <li class="flex gap-2"><i class="fa-solid fa-circle text-emerald-500 mt-1 text-xs"></i>Receitas e prontuário integrados</li>
+              </ul>
+            </article>
+            <article class="rounded-2xl border border-emerald-100 bg-white p-6 shadow-sm">
+              <h3 class="text-lg font-semibold text-emerald-800">Empresas e RH</h3>
+              <p class="mt-2 text-sm text-slate-600">Benefício corporativo com planos trimestrais e fidelidade de 3 meses.</p>
+              <ul class="mt-4 space-y-2 text-sm text-slate-600">
+                <li class="flex gap-2"><i class="fa-solid fa-circle text-emerald-500 mt-1 text-xs"></i>Dashboard para acompanhar indicadores</li>
+                <li class="flex gap-2"><i class="fa-solid fa-circle text-emerald-500 mt-1 text-xs"></i>Acompanhamento nutricional e psicológico</li>
+              </ul>
+            </article>
+            <article class="rounded-2xl border border-emerald-100 bg-white p-6 shadow-sm">
+              <h3 class="text-lg font-semibold text-emerald-800">Corretores e afiliados</h3>
+              <p class="mt-2 text-sm text-slate-600">Receba materiais de venda, landing pages e suporte comercial.</p>
+              <ul class="mt-4 space-y-2 text-sm text-slate-600">
+                <li class="flex gap-2"><i class="fa-solid fa-circle text-emerald-500 mt-1 text-xs"></i>Comissionamento recorrente</li>
+                <li class="flex gap-2"><i class="fa-solid fa-circle text-emerald-500 mt-1 text-xs"></i>Treinamentos periódicos</li>
+              </ul>
+            </article>
+            <article class="rounded-2xl border border-emerald-100 bg-emerald-50/70 p-6 shadow-sm">
+              <h3 class="text-lg font-semibold text-emerald-800">Influenciadores e criadores</h3>
+              <p class="mt-2 text-sm text-slate-600">Monetize sua audiência oferecendo planos com acompanhamento médico.</p>
+              <ul class="mt-4 space-y-2 text-sm text-slate-600">
+                <li class="flex gap-2"><i class="fa-solid fa-circle text-emerald-500 mt-1 text-xs"></i>Links rastreados e relatórios mensais</li>
+                <li class="flex gap-2"><i class="fa-solid fa-circle text-emerald-500 mt-1 text-xs"></i>Campanhas promocionais exclusivas</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulário simples -->
+    <section id="form-parceiro" class="py-16 bg-gradient-to-br from-emerald-600 to-emerald-700 text-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="rounded-3xl bg-white/10 backdrop-blur-sm border border-white/20 p-8 space-y-6">
+          <div class="space-y-3">
+            <h2 class="text-3xl font-bold">Envie seus dados e receba o contato do nosso time</h2>
+            <p class="text-emerald-100 text-sm">Formulário ilustrativo. Substitua pelos campos reais assim que o cliente disponibilizar as integrações.</p>
+          </div>
+          <form class="grid gap-4 sm:grid-cols-2">
+            <div class="sm:col-span-1">
+              <label class="block text-sm font-medium text-white/80">Nome completo</label>
+              <input type="text" placeholder="Seu nome" class="mt-2 w-full rounded-lg border border-white/30 bg-white/10 px-4 py-2 text-white placeholder-white/60 focus:border-white focus:outline-none" />
+            </div>
+            <div class="sm:col-span-1">
+              <label class="block text-sm font-medium text-white/80">Empresa</label>
+              <input type="text" placeholder="Nome da empresa" class="mt-2 w-full rounded-lg border border-white/30 bg-white/10 px-4 py-2 text-white placeholder-white/60 focus:border-white focus:outline-none" />
+            </div>
+            <div class="sm:col-span-1">
+              <label class="block text-sm font-medium text-white/80">E-mail</label>
+              <input type="email" placeholder="contato@empresa.com" class="mt-2 w-full rounded-lg border border-white/30 bg-white/10 px-4 py-2 text-white placeholder-white/60 focus:border-white focus:outline-none" />
+            </div>
+            <div class="sm:col-span-1">
+              <label class="block text-sm font-medium text-white/80">Telefone</label>
+              <input type="tel" placeholder="(00) 00000-0000" class="mt-2 w-full rounded-lg border border-white/30 bg-white/10 px-4 py-2 text-white placeholder-white/60 focus:border-white focus:outline-none" />
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block text-sm font-medium text-white/80">Mensagem</label>
+              <textarea rows="4" placeholder="Conte um pouco sobre a sua demanda" class="mt-2 w-full rounded-lg border border-white/30 bg-white/10 px-4 py-2 text-white placeholder-white/60 focus:border-white focus:outline-none"></textarea>
+            </div>
+            <div class="sm:col-span-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <p class="text-xs text-white/70">Ao enviar, você concorda com os <a href="index.html#termos" class="underline">Termos de Aceite</a>.</p>
+              <button type="button" class="inline-flex items-center justify-center rounded-full bg-white text-emerald-700 px-6 py-3 font-semibold shadow-soft hover:-translate-y-0.5 hover:shadow-medium transition-transform">
+                <i class="fa-solid fa-paper-plane mr-2"></i> Enviar formulário
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div>
+        <h4 class="text-lg font-semibold">Médicos Consultas Online</h4>
+        <p class="mt-2 text-gray-400 text-sm">N. Pero Negócios Inovadores LTDA<br>CNPJ: 28.590.077/0001-88</p>
+      </div>
+      <div>
+        <h5 class="font-semibold">Contato</h5>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a class="hover:text-emerald-400 transition" href="tel:+5551995095554">(51) 99509-5554</a></li>
+          <li><a class="hover:text-emerald-400 transition" href="mailto:atendimento@medicosconsultasonline.com.br">atendimento@medicosconsultasonline.com.br</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-semibold">Informações</h5>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a class="hover:text-emerald-400 transition" href="planos.html">Planos</a></li>
+          <li><a class="hover:text-emerald-400 transition" href="index.html#termos">Termos de aceite</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-semibold">Redes sociais</h5>
+        <div class="mt-3 flex flex-wrap gap-3">
+          <a href="#" aria-label="Instagram" class="inline-flex items-center gap-2 rounded-lg border border-gray-700 px-3 py-2 hover:bg-gray-800 transition">
+            <i class="fa-brands fa-instagram"></i><span class="text-sm">Instagram</span>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="inline-flex items-center gap-2 rounded-lg border border-gray-700 px-3 py-2 hover:bg-gray-800 transition">
+            <i class="fa-brands fa-linkedin"></i><span class="text-sm">LinkedIn</span>
+          </a>
+          <a href="#" aria-label="WhatsApp" class="inline-flex items-center gap-2 rounded-lg border border-gray-700 px-3 py-2 hover:bg-gray-800 transition">
+            <i class="fa-brands fa-whatsapp"></i><span class="text-sm">WhatsApp</span>
+          </a>
+        </div>
+      </div>
+      <div class="sm:col-span-2 lg:col-span-4">
+        <div class="rounded-2xl border border-emerald-500/30 bg-emerald-600/10 px-6 py-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div class="text-left">
+            <p class="text-sm font-semibold uppercase tracking-wide text-emerald-300">Termos em destaque</p>
+            <p class="mt-1 text-sm text-gray-200">Direcione seus parceiros para a leitura completa das condições comerciais e políticas de privacidade.</p>
+          </div>
+          <a href="index.html#termos" class="inline-flex items-center rounded-full bg-gradient-primary px-5 py-2.5 font-semibold text-white shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5">
+            <i class="fa-solid fa-file-signature mr-2"></i> Acessar termos de aceite
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-sm text-gray-400 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <span>© 2022–<span data-year></span>, Médicos Consultas Online. Todos os direitos reservados.</span>
+        <a href="#" class="hover:text-emerald-400 transition inline-flex items-center">Voltar ao topo <i class="fa-solid fa-arrow-up ml-2 text-xs"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if(menuBtn && mobileMenu){
+        menuBtn.addEventListener('click', ()=>{
+          mobileMenu.classList.toggle('hidden');
+          const icon = menuBtn.querySelector('i');
+          if(icon){ icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times'); }
+        });
+      }
+    })();
+
+    document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
+  </script>
+</body>
+</html>

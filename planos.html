@@ -43,17 +43,17 @@
 
   <!-- Topbar -->
   <div class="bg-emerald-600 text-white text-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between gap-4">
-      <div class="flex flex-wrap items-center gap-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="hidden sm:flex flex-wrap items-center gap-4">
         <span class="inline-flex items-center gap-2"><i class="fas fa-phone w-4 h-4"></i>(51) 99509-5554</span>
         <a href="mailto:contato@medicosconsultasonline.com.br" class="inline-flex items-center gap-2 hover:underline">
           <i class="fas fa-envelope w-4 h-4"></i>
           contato@medicosconsultasonline.com.br
         </a>
       </div>
-      <div class="hidden sm:flex items-center gap-3">
-        <a href="#cliente" class="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 transition">Área do Cliente</a>
-        <a href="#parceiro" class="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 transition">Quero Virar Parceiro</a>
+      <div class="flex w-full sm:w-auto items-center justify-center sm:justify-end gap-3">
+        <a href="#cliente" class="px-3 py-1 rounded-full bg-white/15 hover:bg-white/25 transition">Área do Cliente</a>
+        <a href="parceiros.html" class="px-3 py-1 rounded-full bg-white/15 hover:bg-white/25 transition">Quero Virar Parceiro</a>
       </div>
     </div>
   </div>
@@ -78,12 +78,13 @@
           <a href="index.html#como-funciona" class="navlink text-slate-700 hover:text-emerald-700 transition font-medium">Como Funciona</a>
           <a href="index.html#especialidades" class="navlink text-slate-700 hover:text-emerald-700 transition font-medium">Especialidades</a>
           <a href="planos.html" class="navlink text-emerald-700 font-semibold">Planos</a>
-          <a href="quem-somos.html" class="navlink text-slate-700 hover:text-emerald-700 transition font-medium">Quem Somos</a>
+          <a href="como-funciona.html" class="navlink text-slate-700 hover:text-emerald-700 transition font-medium">Como Funciona</a>
+          <a href="parceiros.html" class="navlink text-slate-700 hover:text-emerald-700 transition font-medium">Parceiros</a>
           <a href="index.html#faq" class="navlink text-slate-700 hover:text-emerald-700 transition font-medium">FAQ</a>
         </nav>
 
         <div class="hidden md:flex">
-          <a href="index.html#contrate" class="inline-flex items-center rounded-full bg-gradient-primary text-white px-5 py-2.5 font-medium shadow-soft hover:shadow-medium transition-all duration-300">Contrate Agora</a>
+          <a href="#contratar" class="inline-flex items-center rounded-full bg-gradient-primary text-white px-5 py-2.5 font-medium shadow-soft hover:shadow-medium transition-all duration-300">Contrate Agora</a>
         </div>
 
         <button id="menuBtn" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 hover:bg-slate-50 transition">
@@ -96,9 +97,10 @@
           <a class="mobilelink rounded-lg px-3 py-2 hover:bg-slate-50 font-medium" href="index.html#como-funciona">Como Funciona</a>
           <a class="mobilelink rounded-lg px-3 py-2 hover:bg-slate-50 font-medium" href="index.html#especialidades">Especialidades</a>
           <a class="mobilelink rounded-lg px-3 py-2 hover:bg-slate-50 font-medium" href="planos.html">Planos</a>
-          <a class="mobilelink rounded-lg px-3 py-2 hover:bg-slate-50 font-medium" href="quem-somos.html">Quem Somos</a>
+          <a class="mobilelink rounded-lg px-3 py-2 hover:bg-slate-50 font-medium" href="como-funciona.html">Como Funciona</a>
+          <a class="mobilelink rounded-lg px-3 py-2 hover:bg-slate-50 font-medium" href="parceiros.html">Parceiros</a>
           <a class="mobilelink rounded-lg px-3 py-2 hover:bg-slate-50 font-medium" href="index.html#faq">FAQ</a>
-          <a class="inline-flex items-center justify-center rounded-lg bg-gradient-primary text-white px-4 py-2.5 font-medium mt-2 shadow-soft hover:shadow-medium transition" href="index.html#contrate">Contrate Agora</a>
+          <a class="inline-flex items-center justify-center rounded-lg bg-gradient-primary text-white px-4 py-2.5 font-medium mt-2 shadow-soft hover:shadow-medium transition" href="#contratar">Contrate Agora</a>
         </div>
       </div>
     </div>
@@ -129,7 +131,7 @@
 
       <!-- Individual 29,90 -->
       <article class="card rounded-2xl bg-white border border-slate-200 p-7" data-cat="individual">
-        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL</div>
+        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL · 3 MESES DE FIDELIDADE</div>
         <h3 class="mt-2 font-semibold text-xl">Individual</h3>
         <ul class="mt-4 space-y-2 text-slate-700 text-sm">
           <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Atendimentos ilimitados com médicos especializados e Clínico Geral</li>
@@ -140,13 +142,14 @@
           <div class="text-xs line-through text-slate-400">De R$ 69,90</div>
           <div class="text-4xl font-extrabold text-slate-900">R$ 29,90</div>
           <div class="text-slate-500 text-sm">/mês</div>
+          <p class="mt-1 text-xs uppercase tracking-wide text-slate-400">Fidelidade mínima de 3 meses</p>
         </div>
-        <a href="#contratar" class="mt-7 inline-flex justify-center w-full px-4 py-3 rounded-lg bg-emerald-600 text-white font-medium hover:bg-emerald-700">Quero esse</a>
+        <a href="#contratar" class="mt-7 inline-flex justify-center w-full px-4 py-3 rounded-lg bg-emerald-600 text-white font-medium shadow-soft hover:bg-emerald-700 transition-transform hover:-translate-y-0.5">Quero esse</a>
       </article>
 
       <!-- Individual Plus 39,90 -->
       <article class="card rounded-2xl bg-white border border-slate-200 p-7" data-cat="individual">
-        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL</div>
+        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL · 3 MESES DE FIDELIDADE</div>
         <h3 class="mt-2 font-semibold text-xl">Individual Plus</h3>
         <ul class="mt-4 space-y-2 text-slate-700 text-sm">
           <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Atendimentos ilimitados com médicos especializados e Clínico Geral</li>
@@ -159,13 +162,14 @@
           <div class="text-xs line-through text-slate-400">De R$ 69,90</div>
           <div class="text-4xl font-extrabold text-slate-900">R$ 39,90</div>
           <div class="text-slate-500 text-sm">/mês</div>
+          <p class="mt-1 text-xs uppercase tracking-wide text-slate-400">Fidelidade mínima de 3 meses</p>
         </div>
-        <a href="#contratar" class="mt-7 inline-flex justify-center w-full px-4 py-3 rounded-lg bg-emerald-600 text-white font-medium hover:bg-emerald-700">Quero esse</a>
+        <a href="#contratar" class="mt-7 inline-flex justify-center w-full px-4 py-3 rounded-lg bg-emerald-600 text-white font-medium shadow-soft hover:bg-emerald-700 transition-transform hover:-translate-y-0.5">Quero esse</a>
       </article>
 
       <!-- Casal 39,90 (por casal) -->
       <article class="card rounded-2xl bg-white border border-slate-200 p-7" data-cat="casal">
-        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL</div>
+        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL · 3 MESES DE FIDELIDADE</div>
         <h3 class="mt-2 font-semibold text-xl">Casal</h3>
         <p class="text-slate-500 text-sm">para 2 pessoas</p>
         <ul class="mt-4 space-y-2 text-slate-700 text-sm">
@@ -177,14 +181,15 @@
           <div class="text-xs line-through text-slate-400">De R$ 69,90</div>
           <div class="text-4xl font-extrabold text-slate-900">R$ 39,90</div>
           <div class="text-slate-500 text-sm">/mês — <b>por casal</b></div>
+          <p class="mt-1 text-xs uppercase tracking-wide text-slate-400">Fidelidade mínima de 3 meses</p>
         </div>
-        <a href="#contratar" class="mt-7 inline-flex justify-center w-full px-4 py-3 rounded-lg bg-emerald-600 text-white font-medium hover:bg-emerald-700">Quero esse</a>
+        <a href="#contratar" class="mt-7 inline-flex justify-center w-full px-4 py-3 rounded-lg bg-emerald-600 text-white font-medium shadow-soft hover:bg-emerald-700 transition-transform hover:-translate-y-0.5">Quero esse</a>
       </article>
 
       <!-- Casal Plus 49,90 -->
       <article class="card relative rounded-2xl bg-white border-2 border-emerald-600 p-7" data-cat="casal">
         <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-600 text-white text-[11px] px-3 py-1 rounded-full font-semibold">Recomendado</div>
-        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL</div>
+        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL · 3 MESES DE FIDELIDADE</div>
         <h3 class="mt-2 font-semibold text-xl">Casal Plus</h3>
         <p class="text-slate-500 text-sm">para 2 pessoas</p>
         <ul class="mt-4 space-y-2 text-slate-700 text-sm">
@@ -198,13 +203,14 @@
           <div class="text-xs line-through text-slate-400">De R$ 79,90</div>
           <div class="text-4xl font-extrabold text-slate-900">R$ 49,90</div>
           <div class="text-slate-500 text-sm">/mês — <b>por casal</b></div>
+          <p class="mt-1 text-xs uppercase tracking-wide text-slate-400">Fidelidade mínima de 3 meses</p>
         </div>
-        <a href="#contratar" class="mt-7 inline-flex justify-center w-full px-4 py-3 rounded-lg bg-emerald-600 text-white font-medium hover:bg-emerald-700">Quero esse</a>
+        <a href="#contratar" class="mt-7 inline-flex justify-center w-full px-4 py-3 rounded-lg bg-emerald-600 text-white font-medium shadow-soft hover:bg-emerald-700 transition-transform hover:-translate-y-0.5">Quero esse</a>
       </article>
 
       <!-- Familiar 59,90 (até 4) -->
       <article class="card rounded-2xl bg-white border border-slate-200 p-7" data-cat="familiar">
-        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL</div>
+        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL · 3 MESES DE FIDELIDADE</div>
         <h3 class="mt-2 font-semibold text-xl">Familiar</h3>
         <p class="text-slate-500 text-sm">até 4 pessoas</p>
         <ul class="mt-4 space-y-2 text-slate-700 text-sm">
@@ -216,13 +222,14 @@
           <div class="text-xs line-through text-slate-400">De R$ 89,90</div>
           <div class="text-4xl font-extrabold text-slate-900">R$ 59,90</div>
           <div class="text-slate-500 text-sm">/mês — <b>até 4 pessoas</b></div>
+          <p class="mt-1 text-xs uppercase tracking-wide text-slate-400">Fidelidade mínima de 3 meses</p>
         </div>
-        <a href="#contratar" class="mt-7 inline-flex justify-center w-full px-4 py-3 rounded-lg bg-emerald-600 text-white font-medium hover:bg-emerald-700">Quero esse</a>
+        <a href="#contratar" class="mt-7 inline-flex justify-center w-full px-4 py-3 rounded-lg bg-emerald-600 text-white font-medium shadow-soft hover:bg-emerald-700 transition-transform hover:-translate-y-0.5">Quero esse</a>
       </article>
 
       <!-- Familiar Plus 69,90 (até 4) -->
       <article class="card rounded-2xl bg-white border border-slate-200 p-7" data-cat="familiar">
-        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL</div>
+        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL · 3 MESES DE FIDELIDADE</div>
         <h3 class="mt-2 font-semibold text-xl">Familiar Plus</h3>
         <p class="text-slate-500 text-sm">até 4 pessoas</p>
         <ul class="mt-4 space-y-2 text-slate-700 text-sm">
@@ -236,13 +243,14 @@
           <div class="text-xs line-through text-slate-400">De R$ 99,90</div>
           <div class="text-4xl font-extrabold text-slate-900">R$ 69,90</div>
           <div class="text-slate-500 text-sm">/mês — <b>até 4 pessoas</b></div>
+          <p class="mt-1 text-xs uppercase tracking-wide text-slate-400">Fidelidade mínima de 3 meses</p>
         </div>
-        <a href="#contratar" class="mt-7 inline-flex justify-center w-full px-4 py-3 rounded-lg bg-emerald-600 text-white font-medium hover:bg-emerald-700">Quero esse</a>
+        <a href="#contratar" class="mt-7 inline-flex justify-center w-full px-4 py-3 rounded-lg bg-emerald-600 text-white font-medium shadow-soft hover:bg-emerald-700 transition-transform hover:-translate-y-0.5">Quero esse</a>
       </article>
 
       <!-- Empresarial (mín. 6) -->
       <article class="card rounded-2xl bg-white border border-slate-200 p-7" data-cat="empresarial">
-        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL</div>
+        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL · 3 MESES DE FIDELIDADE</div>
         <h3 class="mt-2 font-semibold text-xl">Empresarial</h3>
         <p class="text-slate-500 text-sm">mínimo de 6 funcionários</p>
         <ul class="mt-4 space-y-2 text-slate-700 text-sm">
@@ -250,12 +258,13 @@
           <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Sem carência</li>
           <li class="flex gap-2"><i class="fa-solid fa-link text-emerald-600 mt-1"></i><a class="underline hover:no-underline" href="index.html#especialidades">Clique aqui e veja todas Especialidades para seus Colaboradores</a></li>
         </ul>
+        <p class="mt-4 text-xs uppercase tracking-wide text-slate-400">Fidelidade mínima de 3 meses por colaborador incluído</p>
         <a href="mailto:contato@medicosconsultasonline.com.br" class="mt-7 inline-flex justify-center w-full px-4 py-3 rounded-lg border border-slate-300 text-slate-800 font-medium hover:bg-slate-50">Falar com vendas</a>
       </article>
 
       <!-- Empresarial Plus (mín. 6) -->
       <article class="card rounded-2xl bg-white border border-slate-200 p-7" data-cat="empresarial">
-        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL</div>
+        <div class="badge inline-flex items-center px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">PLANO TRIMESTRAL · 3 MESES DE FIDELIDADE</div>
         <h3 class="mt-2 font-semibold text-xl">Empresarial Plus</h3>
         <p class="text-slate-500 text-sm">mínimo de 6 funcionários</p>
         <ul class="mt-4 space-y-2 text-slate-700 text-sm">
@@ -265,6 +274,7 @@
           <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Consultas com Psicólogo</li>
           <li class="flex gap-2"><i class="fa-solid fa-link text-emerald-600 mt-1"></i><a class="underline hover:no-underline" href="index.html#especialidades">Clique aqui e veja todas Especialidades para seus Colaboradores</a></li>
         </ul>
+        <p class="mt-4 text-xs uppercase tracking-wide text-slate-400">Fidelidade mínima de 3 meses por colaborador incluído</p>
         <a href="mailto:contato@medicosconsultasonline.com.br" class="mt-7 inline-flex justify-center w-full px-4 py-3 rounded-lg border border-slate-300 text-slate-800 font-medium hover:bg-slate-50">Falar com vendas</a>
       </article>
 
@@ -277,7 +287,7 @@
       <h2 class="text-3xl font-bold">Pronto para começar?</h2>
       <p class="mt-2 text-emerald-100">Atendimento 24h, sem carência, com receitas e atestados digitais.</p>
       <div class="mt-7 flex flex-wrap justify-center gap-3">
-        <a href="index.html#contrate" class="px-6 py-3 rounded-full bg-white text-emerald-700 font-semibold shadow-soft hover:bg-emerald-50"><i class="fa-solid fa-calendar-check mr-2"></i>Contratar agora</a>
+        <a href="#contratar" class="px-6 py-3 rounded-full bg-white text-emerald-700 font-semibold shadow-soft hover:bg-emerald-50"><i class="fa-solid fa-calendar-check mr-2"></i>Contratar agora</a>
         <a href="index.html#faq" class="px-6 py-3 rounded-full bg-white/10 text-white hover:bg-white/20"><i class="fa-solid fa-circle-question mr-2"></i>Tirar dúvidas</a>
       </div>
     </div>
@@ -314,6 +324,17 @@
           </a>
           <a href="#" aria-label="WhatsApp" class="inline-flex items-center gap-2 rounded-lg border border-gray-700 px-3 py-2 hover:bg-gray-800 transition">
             <i class="fa-brands fa-whatsapp"></i><span class="text-sm">WhatsApp</span>
+          </a>
+        </div>
+      </div>
+      <div class="sm:col-span-2 lg:col-span-4">
+        <div class="rounded-2xl border border-emerald-500/30 bg-emerald-600/10 px-6 py-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div class="text-left">
+            <p class="text-sm font-semibold uppercase tracking-wide text-emerald-300">Termos em destaque</p>
+            <p class="mt-1 text-sm text-gray-200">Antes de contratar, leia as regras de uso, proteção de dados e direitos do paciente.</p>
+          </div>
+          <a href="index.html#termos" class="inline-flex items-center rounded-full bg-gradient-primary px-5 py-2.5 font-semibold text-white shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5">
+            <i class="fa-solid fa-file-signature mr-2"></i> Acessar termos de aceite
           </a>
         </div>
       </div>
