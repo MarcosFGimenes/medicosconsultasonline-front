@@ -62,31 +62,27 @@
     .sticky-nav { position: sticky; top: 0; z-index: 1000; }
     .feature-icon { width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
     .specialty-card { transition: all 0.3s ease; }
-    .specialty-card:hover { transform: scale(1.03); }
-    .carousel-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.5s ease; }
-    .carousel-slide.active { opacity: 1; }
-    .dot { width: 12px; height: 12px; border-radius: 9999px; background: #e2e8f0; }
-    .dot.active { background: #10b981; }
-    @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
-    @keyframes slideInLeft { from { transform: translateX(-20px); opacity: 0 } to { transform: none; opacity: 1 } }
-    @keyframes slideInRight { from { transform: translateX(20px); opacity: 0 } to { transform: none; opacity: 1 } }
-    .carousel-overlay {
-      position: absolute; inset: 0;
-      display: flex; align-items: flex-end; justify-content: flex-start;
-      padding: clamp(1.5rem, 5vw, 3.5rem);
-      background: linear-gradient(90deg, rgba(0,0,0,0.4), rgba(0,0,0,0) 60%);
-      pointer-events: auto;
+    .specialty-card:hover { transform: translateY(-2px); box-shadow: 0 16px 32px rgba(16,185,129,0.08); }
+    .hero-variant { display: none; }
+    .hero-variant.active { display: block; }
+    .hero-toggle { transition: all 0.3s ease; }
+    .hero-toggle.active { background: linear-gradient(135deg,#10b981,#22b24f); color: #fff; box-shadow: 0 12px 30px rgba(16,185,129,0.25); }
+    .hero-toggle:not(.active) { background: rgba(16,185,129,0.08); color: #047857; }
+    .hero-image-card { position: relative; overflow: hidden; border-radius: 1.5rem; background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(34,178,79,0.08)); }
+    .hero-image-card::before, .hero-image-card::after {
+      content: ""; position: absolute; border-radius: 9999px; background: rgba(16,185,129,0.22);
+    }
+    .hero-image-card::before { width: 180px; height: 180px; top: -60px; right: -40px; }
+    .hero-image-card::after { width: 220px; height: 220px; bottom: -100px; left: -60px; }
+    .hero-image-inner { position: relative; z-index: 1; }
+    .hero-floating-card { animation: float 6s ease-in-out infinite; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
     @media (max-width: 640px) {
       .section-padding { padding: 2.5rem 0; }
-      .hero-content { text-align: center; }
-      .carousel { height: 320px; }
-    }
-    @media (min-width: 641px) and (max-width: 1024px) {
-      .carousel { height: 400px; }
-    }
-    @media (min-width: 1025px) {
-      .carousel { height: 480px; }
+      .hero-toggle-group { flex-direction: column; }
     }
   </style>
 </head>
@@ -94,15 +90,15 @@
   <!-- Topbar -->
   <div class="bg-emerald-600 text-white text-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex flex-wrap items-center gap-4">
+      <div class="hidden sm:flex flex-wrap items-center gap-4">
         <span class="inline-flex items-center gap-2"><i class="fas fa-phone w-4 h-4"></i>(51) 99509-5554</span>
         <a href="mailto:contato@medicosconsultasonline.com.br" class="inline-flex items-center gap-2 hover:underline">
           <i class="fas fa-envelope w-4 h-4"></i>contato@medicosconsultasonline.com.br
         </a>
       </div>
-      <div class="flex items-center gap-3">
-        <a href="#cliente" class="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 transition font-medium">Área do Cliente</a>
-        <a href="#parceiro" class="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 transition font-medium">Quero Virar Parceiro</a>
+      <div class="flex w-full sm:w-auto items-center justify-center sm:justify-end gap-3">
+        <a href="#cliente" class="px-4 py-2 rounded-full bg-white/15 hover:bg-white/25 transition font-medium">Área do Cliente</a>
+        <a href="parceiros.html" class="px-4 py-2 rounded-full bg-white/15 hover:bg-white/25 transition font-medium">Quero Virar Parceiro</a>
       </div>
     </div>
   </div>
@@ -119,11 +115,11 @@
           <a href="#como-funciona" class="navlink text-gray-600 hover:text-emerald-600 font-medium text-sm">Como Funciona</a>
           <a href="#especialidades" class="navlink text-gray-600 hover:text-emerald-600 font-medium text-sm">Especialidades</a>
           <a href="planos.html" class="navlink text-gray-600 hover:text-emerald-600 font-medium text-sm">Planos</a>
-          <a href="quem-somos.html" class="navlink text-gray-600 hover:text-emerald-600 font-medium text-sm">Quem Somos</a>
+          <a href="parceiros.html" class="navlink text-gray-600 hover:text-emerald-600 font-medium text-sm">Parceiros</a>
           <a href="#faq" class="navlink text-gray-600 hover:text-emerald-600 font-medium text-sm">FAQ</a>
         </nav>
         <div class="hidden lg:flex">
-          <a href="#contrate" class="inline-flex items-center rounded-full bg-gradient-primary text-white px-5 py-2.5 font-medium shadow-md hover:shadow-lg transition-all">Contrate Agora</a>
+          <a href="planos.html#contratar" class="inline-flex items-center rounded-full bg-gradient-primary text-white px-5 py-2.5 font-medium shadow-md hover:shadow-lg transition-all">Contrate Agora</a>
         </div>
         <button id="menuBtn" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition">
           <i class="fas fa-bars text-gray-600 text-lg"></i>
@@ -135,79 +131,131 @@
           <a class="mobilelink px-4 py-2 hover:bg-gray-100 rounded-lg font-medium text-gray-600" href="#como-funciona">Como Funciona</a>
           <a class="mobilelink px-4 py-2 hover:bg-gray-100 rounded-lg font-medium text-gray-600" href="#especialidades">Especialidades</a>
           <a class="mobilelink px-4 py-2 hover:bg-gray-100 rounded-lg font-medium text-gray-600" href="planos.html">Planos</a>
-          <a class="mobilelink px-4 py-2 hover:bg-gray-100 rounded-lg font-medium text-gray-600" href="quem-somos.html">Quem Somos</a>
+          <a class="mobilelink px-4 py-2 hover:bg-gray-100 rounded-lg font-medium text-gray-600" href="parceiros.html">Parceiros</a>
           <a class="mobilelink px-4 py-2 hover:bg-gray-100 rounded-lg font-medium text-gray-600" href="#faq">FAQ</a>
-          <a class="inline-flex items-center justify-center rounded-full bg-gradient-primary text-white px-5 py-2.5 font-medium mt-2 shadow-md hover:shadow-lg transition" href="#contrate">Contrate Agora</a>
+          <a class="inline-flex items-center justify-center rounded-full bg-gradient-primary text-white px-5 py-2.5 font-medium mt-2 shadow-md hover:shadow-lg transition" href="planos.html#contratar">Contrate Agora</a>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Hero / Carrossel -->
-  <section id="inicio" class="section-padding bg-gradient-to-br from-emerald-50 to-white">
+  <!-- Hero -->
+  <section id="inicio" class="section-padding bg-gradient-to-br from-emerald-50 via-white to-emerald-50/40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="relative rounded-2xl overflow-hidden shadow-lg border border-gray-100">
-        <div class="carousel relative w-full">
-          <!-- Slide 1 -->
-          <div class="carousel-slide active">
-            <!-- imagens desktop e mobile -->
-            <img src="assets/img/slide1.png" alt="Slide 1" class="object-cover w-full h-full desktop-img" onerror="this.src='https://placehold.co/1200x600?text=slide1.png+nao+encontrado';">
-            <img src="assets/img/slide1-mobile.png" alt="Slide 1 Mobile" class="object-cover w-full h-full mobile-img hidden" onerror="if(window.isMobile) this.src='https://placehold.co/600x800?text=slide1-mobile.png+nao+encontrado';">
-            <div class="carousel-overlay text-white">
-              <div class="space-y-4">
-                <h2 class="text-2xl sm:text-3xl font-bold">Consulta médica a qualquer hora</h2>
-                <a href="#download" class="inline-flex items-center rounded-full bg-gradient-primary text-white px-6 py-3 font-medium shadow-md hover:shadow-lg transition">
-                  <i class="fa-solid fa-download mr-2"></i> Baixar aplicativo
+      <div class="rounded-3xl border border-emerald-100/70 bg-white/90 shadow-soft p-6 sm:p-10 lg:p-14">
+        <div class="flex flex-wrap justify-center gap-3 hero-toggle-group">
+          <button type="button" class="hero-toggle px-5 py-2.5 rounded-full font-semibold text-sm sm:text-base" data-variant="layout-a">Layout com cards</button>
+          <button type="button" class="hero-toggle px-5 py-2.5 rounded-full font-semibold text-sm sm:text-base" data-variant="layout-b">Layout com agenda</button>
+        </div>
+        <div class="mt-10 space-y-14">
+          <article class="hero-variant active" data-variant="layout-a">
+            <div class="space-y-10">
+              <div class="space-y-4 text-center">
+                <span class="inline-flex items-center gap-2 rounded-full bg-emerald-100 text-emerald-700 px-4 py-1 text-sm font-medium">
+                  Telemedicina que acompanha seu ritmo
+                </span>
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900">
+                  Consultas online com especialistas quando você precisar
+                </h1>
+                <p class="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
+                  Texto provisório: apresente o benefício principal do serviço, reforce a disponibilidade 24/7
+                  e convide o visitante a explorar os planos mais indicados para o seu momento de vida.
+                </p>
+              </div>
+              <div class="flex flex-wrap justify-center gap-3">
+                <a href="planos.html" class="inline-flex items-center rounded-full bg-gradient-primary text-white px-6 py-3 font-semibold shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5">
+                  <i class="fa-solid fa-heart-pulse mr-2"></i> Ver planos baseados nas imagens
+                </a>
+                <a href="#como-funciona" class="inline-flex items-center rounded-full border border-emerald-200 bg-white px-6 py-3 font-semibold text-emerald-700 hover:bg-emerald-50 transition">
+                  <i class="fa-solid fa-circle-question mr-2"></i> Entender como funciona
                 </a>
               </div>
+              <figure class="hero-image-card p-6 sm:p-10">
+                <div class="hero-image-inner space-y-6">
+                  <div class="grid gap-4 sm:grid-cols-2">
+                    <div class="hero-floating-card rounded-2xl bg-white/90 p-5 shadow-md border border-emerald-100">
+                      <div class="flex items-start justify-between">
+                        <div>
+                          <p class="font-semibold text-gray-900">Consulta iniciada</p>
+                          <p class="text-sm text-gray-500">Clínico Geral disponível em menos de 5 minutos</p>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-emerald-600 text-sm font-semibold"><i class="fa-solid fa-signal"></i> Ao vivo</span>
+                      </div>
+                    </div>
+                    <div class="rounded-2xl bg-white/80 p-5 border border-emerald-100">
+                      <p class="text-sm font-medium text-emerald-700 uppercase tracking-wide">Sugestão de plano</p>
+                      <p class="mt-2 text-gray-900 font-semibold text-lg">Familiar Plus</p>
+                      <p class="text-sm text-gray-500">Inclui psicologia e nutrição, ideal para famílias em rotina ativa.</p>
+                    </div>
+                  </div>
+                  <div class="rounded-2xl bg-white/85 p-5 border border-emerald-100">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                      <div>
+                        <p class="font-semibold text-gray-900">Histórico médico organizado</p>
+                        <p class="text-sm text-gray-500">Receitas, atestados e orientações salvos automaticamente.</p>
+                      </div>
+                      <div class="flex items-center gap-3">
+                        <span class="inline-flex items-center gap-2 rounded-full bg-emerald-100 text-emerald-700 px-4 py-2 text-sm font-medium"><i class="fa-solid fa-lock"></i> Dados seguros</span>
+                        <span class="inline-flex items-center gap-2 rounded-full bg-emerald-100 text-emerald-700 px-4 py-2 text-sm font-medium"><i class="fa-solid fa-users"></i> Até 6 dependentes</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </figure>
             </div>
-          </div>
-          <!-- Slide 2 -->
-          <div class="carousel-slide">
-            <!-- imagens desktop e mobile -->
-            <img src="assets/img/slide2.png" alt="Slide 2" class="object-cover w-full h-full desktop-img" onerror="this.src='https://placehold.co/1200x600?text=slide2.png+nao+encontrado';">
-            <img src="assets/img/slide2-mobile.png" alt="Slide 2 Mobile" class="object-cover w-full h-full mobile-img hidden" onerror="if(window.isMobile) this.src='https://placehold.co/600x800?text=slide2-mobile.png+nao+encontrado';">
-            <div class="carousel-overlay text-white">
-              <div class="space-y-4">
-                <h2 class="text-2xl sm:text-3xl font-bold">Planos que cabem no seu bolso</h2>
-                <div class="flex flex-wrap gap-3">
-                  <a href="planos.html" class="inline-flex items-center rounded-full bg-white text-emerald-700 px-6 py-3 font-medium shadow-md hover:bg-gray-100 transition">
-                    <i class="fa-solid fa-heart mr-2"></i> Ver planos
-                  </a>
-                  <a href="#como-funciona" class="inline-flex items-center rounded-full bg-white/20 backdrop-blur px-6 py-3 font-medium hover:bg-white/30 transition">
-                    <i class="fa-solid fa-circle-question mr-2"></i> Como funciona
-                  </a>
+          </article>
+          <article class="hero-variant" data-variant="layout-b">
+            <div class="space-y-10">
+              <div class="space-y-4 text-center">
+                <span class="inline-flex items-center gap-2 rounded-full bg-emerald-900 text-emerald-100 px-4 py-1 text-sm font-medium">
+                  Teste visual B — foco em agenda inteligente
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900">
+                  Organização de consultas e bem-estar em uma timeline intuitiva
+                </h2>
+                <p class="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
+                  Texto provisório: apresente benefícios complementares como lembretes automáticos,
+                  centralização de exames e priorização das especialidades mais procuradas.
+                </p>
+              </div>
+              <div class="flex flex-wrap justify-center gap-3">
+                <a href="planos.html" class="inline-flex items-center rounded-full bg-emerald-600 text-white px-6 py-3 font-semibold shadow-md hover:bg-emerald-700 transition-transform hover:-translate-y-0.5">
+                  <i class="fa-solid fa-calendar-check mr-2"></i> Cadastre-se agora
+                </a>
+                <a href="como-funciona.html" class="inline-flex items-center rounded-full border border-emerald-200 bg-white px-6 py-3 font-semibold text-emerald-700 hover:bg-emerald-50 transition">
+                  <i class="fa-solid fa-book-open mr-2"></i> Ver guia completo
+                </a>
+              </div>
+              <div class="hero-image-card p-6 sm:p-10">
+                <div class="hero-image-inner grid gap-4">
+                  <div class="rounded-2xl bg-white/90 p-5 border border-emerald-100 shadow-md">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <p class="text-sm uppercase tracking-wide text-emerald-700 font-medium">Hoje, 20h</p>
+                        <p class="mt-1 text-gray-900 font-semibold text-lg">Dermatologia — cuidados com a pele</p>
+                      </div>
+                      <span class="inline-flex items-center gap-2 text-sm text-emerald-700 font-semibold"><i class="fa-solid fa-bell"></i> Lembrete enviado</span>
+                    </div>
+                    <p class="mt-3 text-sm text-gray-500">Compartilhe fotos e exames com antecedência para agilizar o atendimento.</p>
+                  </div>
+                  <div class="grid gap-4 sm:grid-cols-2">
+                    <div class="rounded-2xl bg-white/85 p-5 border border-emerald-100">
+                      <p class="text-sm uppercase tracking-wide text-emerald-700 font-semibold">Próximas indicações</p>
+                      <ul class="mt-3 space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-emerald-500 mt-1 text-xs"></i> Neurologia — acompanhamento preventivo</li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-emerald-500 mt-1 text-xs"></i> Psicologia — sessões semanais</li>
+                      </ul>
+                    </div>
+                    <div class="rounded-2xl bg-white/85 p-5 border border-emerald-100">
+                      <p class="text-sm uppercase tracking-wide text-emerald-700 font-semibold">Status do plano</p>
+                      <p class="mt-2 text-gray-900 font-semibold">Trimestral • 3 meses de fidelidade</p>
+                      <p class="text-sm text-gray-500">Renovação automática com possibilidade de upgrade para o Plano Plus.</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <!-- Slide 3 -->
-          <div class="carousel-slide">
-            <!-- imagens desktop e mobile -->
-            <img src="assets/img/slide3.png" alt="Slide 3" class="object-cover w-full h-full desktop-img" onerror="this.src='https://placehold.co/1200x600?text=slide3.png+nao+encontrado';">
-            <img src="assets/img/slide3-mobile.png" alt="Slide 3 Mobile" class="object-cover w-full h-full mobile-img hidden" onerror="if(window.isMobile) this.src='https://placehold.co/600x800?text=slide3-mobile.png+nao+encontrado';">
-            <div class="carousel-overlay text-white">
-              <div class="space-y-4">
-                <h2 class="text-2xl sm:text-3xl font-bold">Agende com especialistas</h2>
-                <a href="#contrate" class="inline-flex items-center rounded-full bg-gradient-primary text-white px-6 py-3 font-medium shadow-md hover:shadow-lg transition">
-                  <i class="fa-solid fa-calendar-plus mr-2"></i> Agendar consulta
-                </a>
-              </div>
-            </div>
-          </div>
-          <!-- Controles -->
-          <button aria-label="Anterior" class="prev absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-700 w-12 h-12 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition">
-            <i class="fa-solid fa-chevron-left text-lg"></i>
-          </button>
-          <button aria-label="Próximo" class="next absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-700 w-12 h-12 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition">
-            <i class="fa-solid fa-chevron-right text-lg"></i>
-          </button>
-          <!-- Dots -->
-          <div class="dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2.5">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -262,66 +310,110 @@
         <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">11+ especialidades <span class="text-emerald-600">ao seu alcance</span></h2>
         <p class="mt-3 text-gray-600 text-lg">Conecte-se com especialistas qualificados em minutos, 24/7.</p>
       </div>
-      <div class="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        <div class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 text-center shadow-sm hover:shadow-md">
-          <div class="mx-auto w-14 h-14 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center"><i class="fas fa-heart-pulse text-xl"></i></div>
-          <p class="mt-4 font-semibold text-lg">Cardiologia</p>
-          <p class="mt-2 text-gray-600 text-sm">Cuidando da saúde do seu coração</p>
-        </div>
-        <div class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 text-center shadow-sm hover:shadow-md">
-          <div class="mx-auto w-14 h-14 rounded-lg bg-pink-100 text-pink-600 flex items-center justify-center"><i class="fas fa-allergies text-xl"></i></div>
-          <p class="mt-4 font-semibold text-lg">Dermatologia</p>
-          <p class="mt-2 text-gray-600 text-sm">Cuidados com a pele e dermatoses</p>
-        </div>
-        <div class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 text-center shadow-sm hover:shadow-md">
-          <div class="mx-auto w-14 h-14 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center"><i class="fas fa-brain text-xl"></i></div>
-          <p class="mt-4 font-semibold text-lg">Neurologia</p>
-          <p class="mt-2 text-gray-600 text-sm">Sistema nervoso e suas doenças</p>
-        </div>
-        <div class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 text-center shadow-sm hover:shadow-md">
-          <div class="mx-auto w-14 h-14 rounded-lg bg-cyan-100 text-cyan-600 flex items-center justify-center"><i class="fas fa-baby text-xl"></i></div>
-          <p class="mt-4 font-semibold text-lg">Pediatria</p>
-          <p class="mt-2 text-gray-600 text-sm">Cuidados com a saúde infantil</p>
-        </div>
-        <div class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 text-center shadow-sm hover:shadow-md">
-          <div class="mx-auto w-14 h-14 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center"><i class="fas fa-brain text-xl"></i></div>
-          <p class="mt-4 font-semibold text-lg">Psicologia</p>
-          <p class="mt-2 text-gray-600 text-sm">Saúde mental e bem-estar</p>
-        </div>
-        <div class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 text-center shadow-sm hover:shadow-md">
-          <div class="mx-auto w-14 h-14 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center"><i class="fas fa-head-side-virus text-xl"></i></div>
-          <p class="mt-4 font-semibold text-lg">Psiquiatria</p>
-          <p class="mt-2 text-gray-600 text-sm">Diagnóstico e tratamento mental</p>
-        </div>
-        <div class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 text-center shadow-sm hover:shadow-md">
-          <div class="mx-auto w-14 h-14 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center"><i class="fas fa-apple-alt text-xl"></i></div>
-          <p class="mt-4 font-semibold text-lg">Nutricionista</p>
-          <p class="mt-2 text-gray-600 text-sm">Alimentação saudável</p>
-        </div>
-        <div class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 text-center shadow-sm hover:shadow-md">
-          <div class="mx-auto w-14 h-14 rounded-lg bg-teal-100 text-teal-600 flex items-center justify-center"><i class="fas fa-procedures text-xl"></i></div>
-          <p class="mt-4 font-semibold text-lg">Urologia</p>
-          <p class="mt-2 text-gray-600 text-sm">Sistema urinário e reprodutor</p>
-        </div>
-        <div class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 text-center shadow-sm hover:shadow-md">
-          <div class="mx-auto w-14 h-14 rounded-lg bg-pink-100 text-pink-600 flex items-center justify-center"><i class="fas fa-female text-xl"></i></div>
-          <p class="mt-4 font-semibold text-lg">Ginecologia</p>
-          <p class="mt-2 text-gray-600 text-sm">Saúde feminina</p>
-        </div>
-        <div class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 text-center shadow-sm hover:shadow-md">
-          <div class="mx-auto w-14 h-14 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center"><i class="fas fa-wheelchair text-xl"></i></div>
-          <p class="mt-4 font-semibold text-lg">Geriatria</p>
-          <p class="mt-2 text-gray-600 text-sm">Saúde do idoso</p>
-        </div>
-        <div class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 text-center shadow-sm hover:shadow-md">
-          <div class="mx-auto w-14 h-14 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center"><i class="fas fa-user-md text-xl"></i></div>
-          <p class="mt-4 font-semibold text-lg">Clínico Geral</p>
-          <p class="mt-2 text-gray-600 text-sm">Atenção primária à saúde</p>
-        </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        <article class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 shadow-sm">
+          <div class="flex items-start gap-4">
+            <div class="w-14 h-14 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center"><i class="fas fa-heart-pulse text-xl"></i></div>
+            <div>
+              <h3 class="font-semibold text-lg text-gray-900">Cardiologia</h3>
+              <p class="mt-1 text-gray-600 text-sm">Monitoramento cardiovascular contínuo.</p>
+            </div>
+          </div>
+        </article>
+        <article class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 shadow-sm">
+          <div class="flex items-start gap-4">
+            <div class="w-14 h-14 rounded-lg bg-pink-100 text-pink-600 flex items-center justify-center"><i class="fas fa-allergies text-xl"></i></div>
+            <div>
+              <h3 class="font-semibold text-lg text-gray-900">Dermatologia</h3>
+              <p class="mt-1 text-gray-600 text-sm">Cuidados com a pele para toda a família.</p>
+            </div>
+          </div>
+        </article>
+        <article class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 shadow-sm">
+          <div class="flex items-start gap-4">
+            <div class="w-14 h-14 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center"><i class="fas fa-brain text-xl"></i></div>
+            <div>
+              <h3 class="font-semibold text-lg text-gray-900">Neurologia</h3>
+              <p class="mt-1 text-gray-600 text-sm">Acompanhamento neurológico especializado.</p>
+            </div>
+          </div>
+        </article>
+        <article class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 shadow-sm">
+          <div class="flex items-start gap-4">
+            <div class="w-14 h-14 rounded-lg bg-cyan-100 text-cyan-600 flex items-center justify-center"><i class="fas fa-baby text-xl"></i></div>
+            <div>
+              <h3 class="font-semibold text-lg text-gray-900">Pediatria</h3>
+              <p class="mt-1 text-gray-600 text-sm">Orientações pediátricas para cada fase.</p>
+            </div>
+          </div>
+        </article>
+        <article class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 shadow-sm">
+          <div class="flex items-start gap-4">
+            <div class="w-14 h-14 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center"><i class="fas fa-comments text-xl"></i></div>
+            <div>
+              <h3 class="font-semibold text-lg text-gray-900">Psicologia</h3>
+              <p class="mt-1 text-gray-600 text-sm">Bem-estar emocional com profissionais certificados.</p>
+            </div>
+          </div>
+        </article>
+        <article class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 shadow-sm">
+          <div class="flex items-start gap-4">
+            <div class="w-14 h-14 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center"><i class="fas fa-head-side-virus text-xl"></i></div>
+            <div>
+              <h3 class="font-semibold text-lg text-gray-900">Psiquiatria</h3>
+              <p class="mt-1 text-gray-600 text-sm">Tratamentos com foco em equilíbrio mental.</p>
+            </div>
+          </div>
+        </article>
+        <article class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 shadow-sm">
+          <div class="flex items-start gap-4">
+            <div class="w-14 h-14 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center"><i class="fas fa-apple-alt text-xl"></i></div>
+            <div>
+              <h3 class="font-semibold text-lg text-gray-900">Nutrição</h3>
+              <p class="mt-1 text-gray-600 text-sm">Planos alimentares personalizados.</p>
+            </div>
+          </div>
+        </article>
+        <article class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 shadow-sm">
+          <div class="flex items-start gap-4">
+            <div class="w-14 h-14 rounded-lg bg-teal-100 text-teal-600 flex items-center justify-center"><i class="fas fa-procedures text-xl"></i></div>
+            <div>
+              <h3 class="font-semibold text-lg text-gray-900">Urologia</h3>
+              <p class="mt-1 text-gray-600 text-sm">Saúde urinária e reprodutiva em foco.</p>
+            </div>
+          </div>
+        </article>
+        <article class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 shadow-sm">
+          <div class="flex items-start gap-4">
+            <div class="w-14 h-14 rounded-lg bg-pink-100 text-pink-600 flex items-center justify-center"><i class="fas fa-female text-xl"></i></div>
+            <div>
+              <h3 class="font-semibold text-lg text-gray-900">Ginecologia</h3>
+              <p class="mt-1 text-gray-600 text-sm">Atenção integral à saúde feminina.</p>
+            </div>
+          </div>
+        </article>
+        <article class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 shadow-sm">
+          <div class="flex items-start gap-4">
+            <div class="w-14 h-14 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center"><i class="fas fa-wheelchair text-xl"></i></div>
+            <div>
+              <h3 class="font-semibold text-lg text-gray-900">Geriatria</h3>
+              <p class="mt-1 text-gray-600 text-sm">Suporte completo para longevidade com saúde.</p>
+            </div>
+          </div>
+        </article>
+        <article class="specialty-card rounded-2xl bg-white border border-gray-100 p-6 shadow-sm">
+          <div class="flex items-start gap-4">
+            <div class="w-14 h-14 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center"><i class="fas fa-user-md text-xl"></i></div>
+            <div>
+              <h3 class="font-semibold text-lg text-gray-900">Clínico Geral</h3>
+              <p class="mt-1 text-gray-600 text-sm">Porta de entrada para todos os atendimentos.</p>
+            </div>
+          </div>
+        </article>
       </div>
       <div class="mt-12 text-center">
-        <a href="#contrate" class="inline-flex items-center rounded-full bg-gradient-primary text-white px-6 py-3 font-medium shadow-md hover:shadow-lg transition">
-          <i class="fas fa-calendar-plus mr-2"></i> Agendar Consulta com Especialista
+        <a href="planos.html" class="inline-flex items-center rounded-full bg-gradient-primary text-white px-6 py-3 font-medium shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5">
+          <i class="fas fa-heart mr-2"></i> Ver planos recomendados
         </a>
       </div>
     </div>
@@ -330,32 +422,56 @@
   <!-- Como Funciona -->
   <section id="como-funciona" class="section-padding bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto">
-        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">Como Funciona</h2>
-        <p class="mt-3 text-gray-600 text-lg">Um processo simples e eficiente para seu atendimento médico</p>
-      </div>
-      <div class="mt-12 relative">
-        <div class="absolute left-1/2 transform -translate-x-1/2 top-12 bottom-12 w-1 bg-emerald-100 hidden lg:block"></div>
-        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          <div class="flex flex-col items-center text-center">
-            <div class="w-16 h-16 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xl shadow-sm">1</div>
-            <h3 class="mt-4 font-semibold text-lg">Cadastro</h3>
-            <p class="mt-2 text-gray-600">Informe seus dados, aceite os termos e escolha um plano.</p>
+      <div class="grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] items-start">
+        <div class="space-y-6">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">Como Funciona</h2>
+          <p class="text-lg text-gray-600">
+            Conteúdo provisório: descreva com mais detalhes cada etapa do serviço, tempo de resposta, canais de
+            atendimento e diferenciais operacionais. Quando receber o texto final, basta substituir este parágrafo
+            mantendo a estrutura alinhada à esquerda para dar leitura confortável mesmo com blocos maiores.
+          </p>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="rounded-2xl border border-emerald-100 bg-emerald-50/60 p-5">
+              <h3 class="text-base font-semibold text-emerald-700">Guia completo</h3>
+              <p class="mt-2 text-sm text-gray-600">Acesse a página dedicada com o passo a passo detalhado, FAQs e materiais de apoio.</p>
+              <a href="como-funciona.html" class="mt-4 inline-flex items-center text-sm font-semibold text-emerald-700 hover:text-emerald-800">
+                <i class="fa-solid fa-arrow-right mr-2"></i> Abrir página "Como funciona"
+              </a>
+            </div>
+            <div class="rounded-2xl border border-emerald-100 bg-white p-5 shadow-sm">
+              <h3 class="text-base font-semibold text-gray-900">Atendimento humanizado</h3>
+              <p class="mt-2 text-sm text-gray-600">Profissionais disponíveis 24h e acompanhamento ativo pós-consulta.</p>
+            </div>
           </div>
-          <div class="flex flex-col items-center text-center">
-            <div class="w-16 h-16 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xl shadow-sm">2</div>
-            <h3 class="mt-4 font-semibold text-lg">Triagem</h3>
-            <p class="mt-2 text-gray-600">Identificamos a melhor especialidade para você.</p>
+        </div>
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 font-semibold">1</div>
+            <div>
+              <h3 class="font-semibold text-lg text-gray-900">Cadastro seguro</h3>
+              <p class="mt-1 text-sm text-gray-600">Preencha os dados essenciais, aceite os termos e escolha o plano ideal.</p>
+            </div>
           </div>
-          <div class="flex flex-col items-center text-center">
-            <div class="w-16 h-16 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xl shadow-sm">3</div>
-            <h3 class="mt-4 font-semibold text-lg">Consulta</h3>
-            <p class="mt-2 text-gray-600">Atendimento por vídeo/áudio com orientações e receitas.</p>
+          <div class="flex items-start gap-4">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 font-semibold">2</div>
+            <div>
+              <h3 class="font-semibold text-lg text-gray-900">Triagem inteligente</h3>
+              <p class="mt-1 text-sm text-gray-600">Analisamos sintomas e histórico para indicar a especialidade certa.</p>
+            </div>
           </div>
-          <div class="flex flex-col items-center text-center">
-            <div class="w-16 h-16 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xl shadow-sm">4</div>
-            <h3 class="mt-4 font-semibold text-lg">Acompanhamento</h3>
-            <p class="mt-2 text-gray-600">Revisões, exames e histórico sempre à mão.</p>
+          <div class="flex items-start gap-4">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 font-semibold">3</div>
+            <div>
+              <h3 class="font-semibold text-lg text-gray-900">Consulta online</h3>
+              <p class="mt-1 text-sm text-gray-600">Videochamada com envio de orientações, receitas e atestados digitais.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 font-semibold">4</div>
+            <div>
+              <h3 class="font-semibold text-lg text-gray-900">Acompanhamento contínuo</h3>
+              <p class="mt-1 text-sm text-gray-600">Revisões programadas, histórico acessível e suporte sempre ativo.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -399,6 +515,21 @@
     </div>
   </section>
 
+  <!-- Termos de Aceite -->
+  <section id="termos" class="bg-emerald-700 text-emerald-50 py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <span class="inline-flex items-center gap-2 rounded-full bg-emerald-600/60 px-4 py-1 text-sm font-medium uppercase tracking-wide">Termos de aceite</span>
+      <h2 class="text-2xl sm:text-3xl font-bold">Transparência total sobre como cuidamos dos seus dados</h2>
+      <p class="text-sm sm:text-base text-emerald-100">
+        Este espaço receberá o conteúdo definitivo enviado pelo cliente. Utilize o botão abaixo para acessar a versão atual
+        e mantenha os usuários informados sobre políticas de privacidade, regras de uso e responsabilidades do serviço.
+      </p>
+      <a href="#" class="inline-flex items-center justify-center rounded-full bg-white/15 px-6 py-3 text-sm font-semibold text-white hover:bg-white/25 transition">
+        <i class="fa-solid fa-file-contract mr-2"></i> Ler termos completos (arquivo em atualização)
+      </a>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="bg-gray-900 text-gray-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -416,7 +547,7 @@
       <div>
         <h5 class="font-semibold">Informações</h5>
         <ul class="mt-3 space-y-2 text-sm">
-          <li><a class="hover:text-emerald-400 transition" href="index.html#termos">Termos de aceite</a></li>
+          <li><a class="hover:text-emerald-400 transition" href="#termos">Termos de aceite</a></li>
         </ul>
       </div>
       <div>
@@ -430,6 +561,17 @@
           </a>
           <a href="#" aria-label="WhatsApp" class="inline-flex items-center gap-2 rounded-lg border border-gray-700 px-3 py-2 hover:bg-gray-800 transition">
             <i class="fa-brands fa-whatsapp"></i><span class="text-sm">WhatsApp</span>
+          </a>
+        </div>
+      </div>
+      <div class="sm:col-span-2 lg:col-span-4">
+        <div class="rounded-2xl border border-emerald-500/30 bg-emerald-600/10 px-6 py-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div class="text-left">
+            <p class="text-sm font-semibold uppercase tracking-wide text-emerald-300">Termos em destaque</p>
+            <p class="mt-1 text-sm text-gray-200">Conheça as regras de uso, proteção de dados e direitos do paciente antes de contratar.</p>
+          </div>
+          <a href="#termos" class="inline-flex items-center rounded-full bg-gradient-primary px-5 py-2.5 font-semibold text-white shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5">
+            <i class="fa-solid fa-file-signature mr-2"></i> Acessar termos de aceite
           </a>
         </div>
       </div>
@@ -480,72 +622,17 @@
     }
     window.addEventListener('scroll', highlightNavLink);
 
-    // Animação de elementos ao scroll
-    function animateOnScroll() {
-      const elements = document.querySelectorAll('.specialty-card, .card-hover');
-      elements.forEach(el => {
-        const pos = el.getBoundingClientRect().top;
-        const screen = window.innerHeight / 1.2;
-        if (pos < screen) el.classList.add('animate-slide-up');
-      });
-    }
-    window.addEventListener('scroll', animateOnScroll);
-    animateOnScroll();
-
-    // Responsividade de imagens do carrossel (desktop x mobile)
-    function isMobileViewport() {
-      return window.matchMedia('(max-width: 640px)').matches;
-    }
-    function updateResponsiveImages() {
-      const isMobile = isMobileViewport();
-      window.isMobile = isMobile; // mantém compatibilidade com onerror nas imagens
-      const mobileImages = document.querySelectorAll('.mobile-img');
-      const desktopImages = document.querySelectorAll('.desktop-img');
-      mobileImages.forEach(img => img.classList.toggle('hidden', !isMobile));
-      desktopImages.forEach(img => img.classList.toggle('hidden', isMobile));
-    }
-
-    // Carrossel
-    (function(){
-      const root = document.querySelector('.carousel');
-      if (!root) return;
-      const slides = Array.from(root.querySelectorAll('.carousel-slide'));
-      const dots = Array.from(root.querySelectorAll('.dots .dot'));
-      const btnPrev = root.querySelector('.prev');
-      const btnNext = root.querySelector('.next');
-      let i = 0, timer;
-
-      function show(idx) {
-        i = (idx + slides.length) % slides.length;
-        slides.forEach((s, k) => s.classList.toggle('active', k === i));
-        dots.forEach((d, k) => d.classList.toggle('active', k === i));
+    // Troca entre variações do hero
+    const heroToggles = document.querySelectorAll('.hero-toggle');
+    const heroVariants = document.querySelectorAll('.hero-variant');
+    if (heroToggles.length && heroVariants.length) {
+      function activate(target) {
+        heroToggles.forEach(btn => btn.classList.toggle('active', btn.dataset.variant === target));
+        heroVariants.forEach(section => section.classList.toggle('active', section.dataset.variant === target));
       }
-      function next() { show(i + 1); restart(); }
-      function prev() { show(i - 1); restart(); }
-      function restart() {
-        clearInterval(timer);
-        timer = setInterval(next, 5000);
-      }
-
-      btnPrev.addEventListener('click', prev);
-      btnNext.addEventListener('click', next);
-      dots.forEach((d, k) => d.addEventListener('click', () => { show(k); restart(); }));
-
-      let startX = 0;
-      root.addEventListener('touchstart', e => startX = e.touches[0].clientX, { passive: true });
-      root.addEventListener('touchend', e => {
-        const dx = e.changedTouches[0].clientX - startX;
-        if (dx > 50) prev();
-        if (dx < -50) next();
-      });
-
-      show(0);
-      restart();
-
-      // aplica imagens corretas conforme viewport e atualiza no resize
-      updateResponsiveImages();
-      window.addEventListener('resize', updateResponsiveImages);
-    })();
+      heroToggles.forEach(btn => btn.addEventListener('click', () => activate(btn.dataset.variant)));
+      activate(heroToggles[0].dataset.variant);
+    }
   </script>
 </body>
 </html>
